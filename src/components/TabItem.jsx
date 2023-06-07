@@ -8,7 +8,7 @@ import tab1 from "./Selections.js"
 export default function TabItem()
 {
     return <div className="itemWrapper">
-        <Grid container >
+        <Grid container>
 
         {tab1.map((combo,index)=>{
             return <Grid key={index} item xs={12} md={6}>

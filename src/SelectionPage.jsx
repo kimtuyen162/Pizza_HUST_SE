@@ -11,20 +11,6 @@ const Menu = () => {
     <MenuLayout>
       <TabItem/>
     </MenuLayout>
-      // <div className={comp.root}>
-      //   <div className={comp.sep}>
-      //     <div className={comp.left}>
-      //       <div className={comp.TopRight}>
-      //         <Header/>
-              
-      //       </div>
-      //       <div>Hello</div>
-      //     </div>
-      //     <div className={comp.right}>
-      //       <Checkout/>
-      //     </div>
-      //   </div>
-      // </div>
     )
 }
 

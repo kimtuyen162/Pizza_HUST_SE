@@ -4,7 +4,7 @@
 
 .topGroup{
     width: 100%;
-    position: sticky;
+    position:sticky;
     margin-bottom: 20px;
 }
 
@@ -117,4 +117,12 @@ Header{
     width: 100%;
     bottom: 0;
     background-color: #969494;
+}
+
+.cartContain
+{
+    display: grid;
+    grid-template-columns: 60% 25% 10%;
+    vertical-align: middle;
+    width: 100%
 }
