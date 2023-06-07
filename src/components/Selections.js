@@ -16,7 +16,32 @@ export const tab1=[
         detail: "1 large,1 small",
         price:369000,
         link:require("../assets/combo4.jpg")
+    },
+    {
+        title: "Combo3",
+        detail: "1 large,1 small",
+        price:369000,
+        link:require("../assets/combo4.jpg")
+    },
+    {
+        title: "Combo3",
+        detail: "1 large,1 small",
+        price:369000,
+        link:require("../assets/combo4.jpg")
     }
 ];
 
-export default tab1;
+export const tab2=[
+    {
+        title: "Box1",
+        detail: "1 large,1 small",
+        price:89000,
+        link:require("../assets/kidsbox1.jpg")
+    },
+    {
+        title: "Box2",
+        detail: "1 large,1 small",
+        price:114000,
+        link:require("../assets/kidsbox2.jpg")
+    }
+];

@@ -1,16 +1,19 @@
 import React from 'react'
-// import Header from './Header'
-// import Checkout from './Checkout'
-// import comp from './menu.module.css'
 import MenuLayout from './components/MenuLayout'
-import TabItem from './components/TabItem'
+import ComboTab from './components/ComboTab'
+import { BrowserRouter, Route,Routes} from "react-router-dom";
 
 
 const Menu = () => {
   return (
-    <MenuLayout>
-      <TabItem/>
-    </MenuLayout>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MenuLayout />}>
+          <Route index element={<ComboTab/>} />
+          <Route path="/:comboSelect" element={<ComboTab/>}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
     )
 }
 

@@ -3,8 +3,10 @@
 } */
 
 .topGroup{
+    z-index: 100;
+    top:0;
     width: 100%;
-    position:sticky;
+    position:fixed;
     margin-bottom: 20px;
 }
 
@@ -78,6 +80,8 @@ Header{
 
 
 .checkoutContainer{
+    z-index: 200;
+    border-left: 1px solid black;
     top:0;
     width:100%;
     background-color:#d9d9d9;
@@ -99,6 +103,7 @@ Header{
 }
 
 .selectBar{
+    max-width: 75%;
     background-color: #E8DBDB;
 }
 

@@ -3,6 +3,7 @@ import Header from "./Header";
 import "./Layout.css"
 import Checkout from "./Checkout";
 import {SelectionBar} from "./SelectionBar";
+import { Outlet } from "react-router-dom";
 
 
 function MenuLayout({children}){
@@ -11,7 +12,7 @@ function MenuLayout({children}){
             <Header/>
             <SelectionBar/>
         </div>
-        <main>{children}</main>
+        <Outlet/>
         <Checkout/>
     </div>
 }
