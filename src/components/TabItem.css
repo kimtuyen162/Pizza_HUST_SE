@@ -1,0 +1,13 @@
+.itemWrapper{ 
+    max-width: 75%;
+    width: 100%;
+}
+
+.itemPrice
+{
+    background-color: #EDEBEB;
+    border: 1px solid black;
+    width: 100%;
+    display: grid;
+    grid-template-columns:75% 25% ;
+}

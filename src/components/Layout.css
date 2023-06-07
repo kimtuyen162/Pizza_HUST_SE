@@ -1,0 +1,120 @@
+/* body{
+    background-color:brown;
+} */
+
+.topGroup{
+    width: 100%;
+    position: sticky;
+    margin-bottom: 20px;
+}
+
+.group
+{
+    margin: 0px;
+    display: grid;
+    grid-template-columns: 17% 53% 15% 15%;
+    background-color: white;
+}
+
+.logo
+{
+    text-align: center;
+    margin-left: 10px;
+    margin-top: 10px;
+    background-color: #bbb2b2;
+
+}
+.logoText
+{
+    font-size: 24px;
+    font-weight: 300;
+    font-family: "Inter",Helvetica;
+}
+
+.div
+{
+    background-color: transparent;
+}
+
+.headerButton1
+{
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 300;
+    font-family: "Inter",Helvetica;
+    justify-content: center;
+    align-items: center;
+    background-color: #bbb2b2;
+    display: flex;
+}
+
+.headerButton2
+{
+    font-size: 20px;
+    font-weight: 300;
+    font-family: "Inter",Helvetica;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#bbb2b2;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+
+.seperateScreen{
+    display:grid;
+    grid-template-columns: 75% 25%;
+    width: 100%;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+  }
+
+Header{
+    flex-grow: 0;
+    max-width: 75%;
+    flex-basis: 75%;
+  }
+
+
+.checkoutContainer{
+    top:0;
+    width:100%;
+    background-color:#d9d9d9;
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    flex-grow: 0;
+    max-width: 25%;
+    flex-basis: 25%;
+    right :0;
+    height: 100vh;
+  }
+
+.checkoutTitle{
+    text-align: center;
+    font-size: 24px;
+    font-weight: 300;
+    font-family: "Inter",Helvetica;
+}
+
+.selectBar{
+    background-color: #E8DBDB;
+}
+
+.textTotal
+{
+    margin-left: 10px;
+    color: white;
+    font-size: 24px;
+    font-weight: 300;
+    font-family: "Inter",Helvetica;
+}
+
+.totalBox
+{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background-color: #969494;
+}

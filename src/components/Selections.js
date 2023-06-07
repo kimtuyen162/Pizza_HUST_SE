@@ -1,0 +1,22 @@
+export const tab1=[
+    {
+        title: "Combo1",
+        detail: "1 large,1 small",
+        price:269000,
+        link:require("../assets/combo2.jpg")
+    },
+    {
+        title: "Combo2",
+        detail: "1 large,1 small",
+        price:289000,
+        link:require("../assets/combo3.jpg")
+    },
+    {
+        title: "Combo3",
+        detail: "1 large,1 small",
+        price:369000,
+        link:require("../assets/combo4.jpg")
+    }
+];
+
+export default tab1;
