@@ -6,14 +6,20 @@ import {SelectionBar} from "./SelectionBar";
 import { Outlet } from "react-router-dom";
 
 
-function MenuLayout({children}){
+function MenuLayout(props){
+
+    function returnDelId(id){
+        console.log(id);
+        props.deleteFromCart(id);
+    }
+
     return <div className="separateScreen">
         <div className="topGroup">
             <Header/>
             <SelectionBar/>
         </div>
         <Outlet/>
-        <Checkout/>
+        <Checkout cart={props.addedItem} onDel={returnDelId}/>
     </div>
 }
 

@@ -2,17 +2,31 @@ import { Button,IconButton} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import React from "react";
 
-function Checkout()
+function Checkout(props)
 {
+
+    function handleClick(itemId){
+        props.onDel(itemId);
+    }
+
     return <div className="checkoutContainer">
         <h1 className="checkoutTitle">Your Cart</h1>
         <div className="cartContain">
-            <div className="itemName">Combo 1</div>
-            <div className="addedItemPrice">200000</div>
-            <IconButton sx={{px:0 , py:0}} aria-label="delete"><DeleteIcon/></IconButton>
+            {props.cart.map((it,index)=>
+            {
+                return <div key ={index} className="checkoutItem">
+                <div>{it.title}</div>
+                <div>{it.price}</div>
+                <IconButton 
+                    onClick={() => {handleClick(index, "it");}}
+                    sx={{px:0 , py:0}} 
+                    aria-label="delete" ><DeleteIcon/></IconButton>
+                </div>
+            })}
             </div>
         <div className="totalBox">
             <h1 className="textTotal">Total</h1>
+            <div className="totalValue"></div>
             <Button 
                 style={{
                     backgroundColor:"#2FB12C",

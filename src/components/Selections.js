@@ -45,3 +45,36 @@ export const tab2=[
         link:require("../assets/kidsbox2.jpg")
     }
 ];
+
+export const tab3=[
+    {
+        title: "pizza1",
+        detail: "1 large,1 small",
+        price:119000,
+        link:require("../assets/peperonipizza.jpg")
+    },
+    {
+        title: "pizza2",
+        detail: "1 large,1 small",
+        price:129000,
+        link:require("../assets/pizzathit.jpg")
+    },
+    {
+        title: "pizza3",
+        detail: "1 large,1 small",
+        price:129000,
+        link:require("../assets/pizzacangu.jpg")
+    },
+    {
+        title: "pizza4",
+        detail: "1 large,1 small",
+        price:89000,
+        link:require("../assets/pizzarau.jpg")
+    },
+    {
+        title: "pizza5",
+        detail: "1 large,1 small",
+        price:269000,
+        link:require("../assets/pizzahaisandouble.jpg")
+    }
+];

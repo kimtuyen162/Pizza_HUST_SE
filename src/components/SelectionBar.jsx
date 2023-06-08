@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import { Link } from "react-router-dom"
 
 
-const comboSelections=['School Year', 'Starter', 'Kids Box', 'Pizza', 'Drinks'];
+const comboSelections=['School Year', 'Kids Box', 'Pizza'];
 
 
 export function SelectionBar()

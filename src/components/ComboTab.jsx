@@ -1,15 +1,14 @@
 import { Button, Card, CardActions,CardMedia,Grid } from "@mui/material";
-import React from "react";
 import "./ComboTab.css"
-import {tab1,tab2} from "./Selections.js"
+import {tab1,tab2,tab3} from "./Selections.js"
 import { useParams } from "react-router-dom";
 
 
 
-export default function ComboTab()
+export default function ComboTab(props)
 {
+
     const {comboSelect} =useParams();
-    console.log(comboSelect)
     let selectedTab=tab1;
 
     switch(comboSelect) {
@@ -19,7 +18,14 @@ export default function ComboTab()
         case 'Kids Box':
             selectedTab=tab2;
             break;
+        case 'Pizza':
+            selectedTab=tab3;
+            break;
         default:
+    }
+
+    function handleClick(item){
+        props.onAdd(selectedTab[item])
     }
 
     return <div className="itemWrapper">
@@ -38,6 +44,8 @@ export default function ComboTab()
                         <h3>Price: {combo.price}</h3>
                         <CardActions>
                             <Button
+                                type="submit"
+                                onClick={() => {handleClick(index, "combo");}}
                                 style={{
                                 backgroundColor:"#79EE50",
                                 color:"black"

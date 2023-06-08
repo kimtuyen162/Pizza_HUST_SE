@@ -126,8 +126,16 @@ Header{
 
 .cartContain
 {
-    display: grid;
-    grid-template-columns: 60% 25% 10%;
-    vertical-align: middle;
+    
+    margin-top: 10px;
+    max-width: 100%;
     width: 100%
+}
+
+.checkoutItem
+{
+    margin: 10px;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 35% 40% 20%;
 }
