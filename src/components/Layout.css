@@ -116,6 +116,15 @@ Header{
     font-family: "Inter",Helvetica;
 }
 
+.totalValue
+{
+    color: white;
+    font-size: 24px;
+    font-weight: 300;
+    text-align: center;
+    font-family: "Inter",Helvetica;
+}
+
 .totalBox
 {
     position: absolute;

@@ -1,6 +1,6 @@
 import React from 'react'
-import MenuLayout from './components/MenuLayout'
-import ComboTab from './components/ComboTab'
+import MenuLayout from '../components/MenuLayout'
+import ComboTab from '../components/ComboTab'
 import { BrowserRouter, Route,Routes} from "react-router-dom";
 
 

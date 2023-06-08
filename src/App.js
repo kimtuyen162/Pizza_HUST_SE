@@ -1,4 +1,4 @@
-import MenuComponent from './SelectionPage';
+import MenuComponent from './page/SelectionPage';
 
 function App() {
   return (

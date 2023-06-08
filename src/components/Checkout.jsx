@@ -1,9 +1,10 @@
 import { Button,IconButton} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
-import React from "react";
 
 function Checkout(props)
 {
+
+    const total=props.cart.reduce((a,v) =>  a = a + v.price , 0 );
 
     function handleClick(itemId){
         props.onDel(itemId);
@@ -26,7 +27,7 @@ function Checkout(props)
             </div>
         <div className="totalBox">
             <h1 className="textTotal">Total</h1>
-            <div className="totalValue"></div>
+            <div className="totalValue">{total}</div>
             <Button 
                 style={{
                     backgroundColor:"#2FB12C",
