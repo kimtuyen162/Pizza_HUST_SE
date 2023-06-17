@@ -80,7 +80,7 @@ function CardItem()
         >
             <Box sx={modalStyle}>
             <div className="modalWrapper">
-            <img src={it.image} />
+            <img src={it.image} alt="pizza"/>
             <div className="modelContentWrapper">
             <Typography id="modal-modal-title" variant="h4" component="h2">
                 {it.title}
