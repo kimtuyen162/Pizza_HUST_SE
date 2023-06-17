@@ -1,0 +1,98 @@
+
+.logoLine{
+    border-radius: 12px;
+    background-color: #FFBE41;
+    height: 10px;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@font-face {
+    font-family: poppins;
+    src: url(../../public/fonts/Poppins-Regular.ttf);
+}
+.menuTitle{
+    margin: 0;
+    font-family: poppins;
+    color:#550312
+}
+
+.barWrapper{
+    top: 0;
+    margin: 10px;
+}
+
+.normalBar{
+    z-index: 100;
+    width: 100%;
+    background-color: white;
+}
+
+.fixedBar
+{
+    transition: ease-in-out;
+    z-index: 100;
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    top:0;
+}
+
+.headerContainer{
+    width:100%;
+}
+
+.headerLogoContainer{
+    margin: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 20%;
+}
+
+.itemList{
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto ;
+}
+
+.priceTag{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: small;
+}
+
+.priceWrapper
+{
+    font-family: poppins;
+    text-align: right;
+}
+
+.priceWrapper h2{
+    margin: 0;
+}
+
+.descriptionWrapper
+{
+    font-family: poppins;
+    font-size: smaller;
+}
+
+.descriptionWrapper h2
+{
+    font-family: poppins;
+    color:#550312;
+}
+
+
+.modalWrapper{
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.modalWrapper img{
+    max-width: 100%;
+}

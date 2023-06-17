@@ -1,9 +1,10 @@
-import MenuComponent from './page/SelectionPage';
+import React from "react";
+import MenuPage from "./MenuPage";
 
 function App() {
   return (
     <div className="App" >
-      <MenuComponent/>
+      <MenuPage/>
     </div>
   );
 }
