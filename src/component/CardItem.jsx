@@ -1,7 +1,9 @@
 import { Card,CardActions,CardContent,CardMedia,Grid,Button,
-Modal,Box,Typography} from "@mui/material";
+Modal,Box,Typography, NativeSelect,InputLabel
+,FormControl} from "@mui/material";
 import { Icon } from '@iconify/react';
 import { PizzaArray } from "./PizzaArray";
+import { CrustArray,SizeArray } from "./AddOnArray";
 import React from "react";
 import "./layout.css"
 
@@ -9,15 +11,14 @@ function CardItem()
 {
 
     const modalStyle = {
-        position: 'absolute',
+        position: 'relative',
         top: '50%',
         left: '50%',
+        mr:'350px',
         transform: 'translate(-50%, -50%)',
-        width: '50%',
         backgroundColor:'white',
         border: '2px solid #FFBE41',
         boxShadow: 24,
-        p: 4,
       };
 
 
@@ -42,7 +43,7 @@ function CardItem()
                 image={item.image}
                 alt="pizza1"
             />
-            <CardContent>
+            <CardContent sx={{pb:0}}>
 
                 <div className="descriptionWrapper">
                     <h2>{item.title}</h2>
@@ -81,13 +82,60 @@ function CardItem()
             <Box sx={modalStyle}>
             <div className="modalWrapper">
             <img src={it.image} alt="pizza"/>
-            <div className="modelContentWrapper">
-            <Typography id="modal-modal-title" variant="h4" component="h2">
+            <div class="overlay overlay_0" className="modalContentWrapper">
+            <Typography id="modal-modal-title" sx={{ mt: 2, mx:2 }} style={{color:"#550312"}} variant="h4" component="h2">
                 {it.title}
             </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            <Typography id="modal-modal-description" sx={{ mt: 2, mx:2 }}>
                 {it.desciption}
             </Typography>
+
+            <div className="optionPane">
+
+            <div className="sizeWrapper">
+            <FormControl style={{ border: "2px solid #FFBE41" }} sx={{mx:2,my:1}}>
+            <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                Size
+            </InputLabel>
+            <NativeSelect
+                defaultValue={0}
+                inputProps={{
+                name: 'size',
+                id: 'uncontrolled-native',
+                }}
+            >
+                {SizeArray.map((item,index)=>{
+                    return <option  key={index} value={item.value}>{item.title}</option>
+                })}
+            </NativeSelect>
+            </FormControl>
+            </div>
+            
+            <div className="crustWrapper">
+            <FormControl style={{ border: "2px solid #FFBE41" }} sx={{mx:2,my:1}}>
+            <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                Crust
+            </InputLabel>
+            <NativeSelect
+                defaultValue={0}
+                inputProps={{
+                name: 'crust',
+                id: 'uncontrolled-native',
+                }}
+            >
+                {CrustArray.map((item,index)=>{
+                    return <option key={index} value={item.value}>{item.title}</option>
+                })}
+            </NativeSelect>
+            </FormControl>
+            </div>
+            
+
+            </div>
+            <div className="buttonWrapper"><Button sx={{mx:2,my:1,
+                    border:1,color:'#550312',borderRadius:'40px', 
+                    borderColor:'#550312',maxHeight:'100px',
+                    }}>Add Now</Button></div>
             </div>
             </div>
             </Box>
