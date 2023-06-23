@@ -19,6 +19,8 @@
 }
 
 .barWrapper{
+    display: grid;
+    grid-template-columns: auto auto;
     top: 0;
     margin: 10px;
 }
@@ -105,4 +107,9 @@
 .modalWrapper img{
     max-width: 50%;
     font-family: poppins;
+}
+
+.checkoutWrapper{
+    max-width: 100%  ;
+    margin-left: auto;
 }

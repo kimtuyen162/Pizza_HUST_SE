@@ -18,7 +18,7 @@ function CardItem()
         transform: 'translate(-50%, -50%)',
         backgroundColor:'white',
         border: '2px solid #FFBE41',
-        boxShadow: 24,
+        boxShadow: 24
       };
 
 
@@ -35,7 +35,7 @@ function CardItem()
 
         <Grid container spacing={2} align="center">
         {PizzaArray.map((item,index)=>{
-            return <Grid key={index} item xs={3} justifyItems={'center'}>
+            return <Grid key={index} item xs={12} sm={6} md={3} justifyItems={'center'}>
             <Card style={{ border: "2px solid #FFBE41" }} sx={{maxHeight:'600px' ,borderRadius:"50px"}}>
             <CardMedia
                 component="img"
@@ -82,7 +82,7 @@ function CardItem()
             <Box sx={modalStyle}>
             <div className="modalWrapper">
             <img src={it.image} alt="pizza"/>
-            <div class="overlay overlay_0" className="modalContentWrapper">
+            <div className="modalContentWrapper">
             <Typography id="modal-modal-title" sx={{ mt: 2, mx:2 }} style={{color:"#550312"}} variant="h4" component="h2">
                 {it.title}
             </Typography>

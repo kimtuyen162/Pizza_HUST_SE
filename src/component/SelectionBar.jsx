@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Tabs,Tab} from "@mui/material";
+import { Button,Grid } from "@mui/material";
+import { Link } from "react-router-dom";
+import { Icon } from "@iconify/react";
 
 function SelectionBar()
 {
@@ -16,14 +18,25 @@ function SelectionBar()
 
     return <div className={fix ? 'fixedBar' : 'normalBar'}>
         <div className="barWrapper">
-            <Tabs
-            variant="fullWidth"
-            scrollButtons="auto"
-            aria-label="scrollable auto tabs example">
-                {selections.map((item,index)=>{
-                    return <Tab className="selectTab" key={index} label={item} sx={{ border:1,mx:4,color:'#550312',borderRadius:'40px', borderColor:'#550312'}}/>
-                })}
-            </Tabs>
+        <Grid container spacing={2} align="center" sx={{maxWidth:'100%',ml:2}}>
+            {selections.map((item,index)=>{
+                return <Grid item key={index} xs={6} md={3}><Link to={`/menu/${item}`}>
+                <Button
+                sx={{ 
+                    border:1,color:'#550312',borderRadius:'40px', 
+                    borderColor:'#550312',height:'100%',width:'100%'
+                    }}
+                >{item}
+                </Button></Link></Grid>
+            })}
+        </Grid>
+        <div className="checkoutWrapper">
+            <Button sx={{mr:2,border:1,color:'#550312',borderRadius:'40px',borderColor:'#550312'}}>
+                <div className="iconWrapper">
+                <Icon style={{fontSize:'25px', color:'#FFBE41', verticalAlign:'middle'}} icon="gridicons:cart"/>
+                </div>
+            </Button>
+        </div>
     </div>
     </div>
 }
