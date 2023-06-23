@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import CardItem from "./CardItem"
 import ComboMenu from "./ComboMenu";
 import OtherMenu from "./OtherMenu";
-import { DrinkArray,StarterArray } from "./OtherArray";
+import { DrinkArray,StarterArray } from "../itemArrays/OtherArray";
 
 function MenuArea(){
 

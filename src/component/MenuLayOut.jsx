@@ -1,6 +1,6 @@
 import React from "react"
 import Header from "./Header";
-import "./layout.css"
+import "../style/layout.css"
 import { Outlet } from "react-router";
 
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { CardMedia,Card,CardContent,Grid,Button,CardActions } from "@mui/material";
-import { ComboArray } from "./ComboArray";
+import { ComboArray } from "../itemArrays/ComboArray";
 import { Icon } from '@iconify/react';
 
 

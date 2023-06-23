@@ -1,6 +1,6 @@
 import React from "react";
 import MenuLayOut from "./component/MenuLayOut";
-import "./component/layout.css"
+import "./style/layout.css"
 import MenuArea from "./component/MenuArea";
 import { Route,Routes } from "react-router";
 import { BrowserRouter } from "react-router-dom";
