@@ -4,9 +4,11 @@ import "../style/layout.css"
 import { Outlet } from "react-router";
 
 
-function MenuLayOut(){
+function MenuLayOut(props){
+
+
     return <div className="topWarpper">
-        <Header/>
+        <Header calTotal={props.calTotal}/>
         <Outlet/>
     </div>
 }

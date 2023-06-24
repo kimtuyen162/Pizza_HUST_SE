@@ -2,13 +2,13 @@ import React from "react";
 import SelectionBar from "./SelectionBar";
 
 
-function Header(){
+function Header(props){
     return <div className="headerContainer">
         <div className="headerLogoContainer">
         <h1 className="menuTitle">Our Menu</h1>
         <div className="logoLine"></div>
         </div>
-        <SelectionBar/>
+        <SelectionBar calTotal={props.calTotal}/>
     </div>
 }
 

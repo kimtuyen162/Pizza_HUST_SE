@@ -3,8 +3,9 @@ import { Button,Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
-function SelectionBar()
+function SelectionBar(props)
 {
+    const total = props.calTotal;
 
     const selections=['Combo','Pizza','Starters','Drinks'];
 
@@ -32,6 +33,7 @@ function SelectionBar()
         </Grid>
         <div className="checkoutWrapper">
             <Button sx={{mr:2,border:1,color:'#550312',borderRadius:'40px',borderColor:'#550312'}}>
+                <div className="totalWrapper">{total}</div>
                 <div className="iconWrapper">
                 <Icon style={{fontSize:'25px', color:'#FFBE41', verticalAlign:'middle'}} icon="gridicons:cart"/>
                 </div>

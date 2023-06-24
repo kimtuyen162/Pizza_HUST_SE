@@ -81,6 +81,7 @@
 {
     font-family: poppins;
     font-size: smaller;
+    height: 130px;
 }
 
 .descriptionWrapper h2
@@ -98,7 +99,7 @@
 .modalContentWrapper{
     height: 100%;
     position:absolute;
-    max-width: 80%;
+    width: 80%;
     right:0;
     z-index: 100;
     background-color: white;
@@ -110,6 +111,13 @@
 }
 
 .checkoutWrapper{
-    max-width: 100%  ;
-    margin-left: auto;
+    position: absolute;
+    max-width: 100% ;
+    right:0;
+}
+
+.totalWrapper{
+    margin-right: 5px; 
+    font-family: poppins;
+    font-size: 16px;
 }

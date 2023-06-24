@@ -4,8 +4,16 @@ import { ComboArray } from "../itemArrays/ComboArray";
 import { Icon } from '@iconify/react';
 
 
-function ComboMenu()
+function ComboMenu(props)
 {
+
+
+    function handleClick(item)
+    {
+        props.addCombo(item);
+    }
+
+
     return <div className="comboWrapper">
         <Grid container spacing={2} align="center">
         {ComboArray.map((item,index)=>{
@@ -31,7 +39,8 @@ function ComboMenu()
             </CardContent>
             <CardActions sx={{justifyContent:"center"}}>
             <Button
-                sx={{ 
+                onClick={()=>{handleClick(item)}} 
+                sx={{
                     border:1,color:'#550312',borderRadius:'40px', 
                     borderColor:'#550312',maxHeight:'100px',
                     }}>

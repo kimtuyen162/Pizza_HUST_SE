@@ -2,12 +2,12 @@ import { Card,CardActions,CardContent,CardMedia,Grid,Button,
 Modal,Box,Typography, NativeSelect,InputLabel
 ,FormControl} from "@mui/material";
 import { Icon } from '@iconify/react';
-import { PizzaArray } from "./PizzaArray";
+import { PizzaArray } from "../itemArrays/PizzaArray";
 import { CrustArray,SizeArray } from "../itemArrays/AddOnArray";
-import React from "react";
+import React,{useState} from "react";
 import "../style/layout.css"
 
-function CardItem()
+function CardItem(props)
 {
 
     const modalStyle = {
@@ -21,14 +21,43 @@ function CardItem()
         boxShadow: 24
       };
 
+    
 
+    const [crust,setCrust]=useState(CrustArray[0]);
+    const [size,setSize]=useState(SizeArray[0]);
     const [it, setIt] = React.useState(PizzaArray[0]);
     const [open, setOpen] = React.useState(false);
     const handleOpen = (event,item) => {
         setIt(item);
+        setCrust(CrustArray[0]);
+        setSize(SizeArray[0]);
         setOpen(true);
     }
-    const handleClose = () => setOpen(false);
+    function handleClose()
+    {
+        setCrust(CrustArray[0]);
+        setSize(SizeArray[0]);
+        setOpen(false);
+    }
+
+    function handleChangeCrust(event){
+        setCrust(CrustArray[event.target.value]);
+    }
+
+    function handleChangeSize(event){
+        setSize(SizeArray[event.target.value]);
+    }
+
+    function handleClick(item)
+    {
+        const selectedPizza={
+            selPizza:item,
+            selCrust:crust,
+            selSize:size,
+            price:(item.price + crust.value + size.value)
+        }
+        props.addPizza(selectedPizza);
+    }
         
 
     return <div className="cardWrapper">
@@ -99,13 +128,14 @@ function CardItem()
             </InputLabel>
             <NativeSelect
                 defaultValue={0}
+                onChange={handleChangeSize}
                 inputProps={{
                 name: 'size',
                 id: 'uncontrolled-native',
                 }}
             >
                 {SizeArray.map((item,index)=>{
-                    return <option  key={index} value={item.value}>{item.title}</option>
+                    return <option key={index} value={index}>{item.title}</option>
                 })}
             </NativeSelect>
             </FormControl>
@@ -118,13 +148,14 @@ function CardItem()
             </InputLabel>
             <NativeSelect
                 defaultValue={0}
+                onChange={handleChangeCrust}
                 inputProps={{
                 name: 'crust',
                 id: 'uncontrolled-native',
                 }}
             >
                 {CrustArray.map((item,index)=>{
-                    return <option key={index} value={item.value}>{item.title}</option>
+                    return <option key={index} value={index}>{item.title}</option>
                 })}
             </NativeSelect>
             </FormControl>
@@ -132,10 +163,13 @@ function CardItem()
             
 
             </div>
-            <div className="buttonWrapper"><Button sx={{mx:2,my:1,
+            <div className="buttonWrapper">
+            <Button sx={{mx:2,my:1,
                     border:1,color:'#550312',borderRadius:'40px', 
                     borderColor:'#550312',maxHeight:'100px',
-                    }}>Add Now</Button></div>
+                    }}
+                    onClick={()=>{handleClick(it)}}>Add Now</Button>
+                    </div>
             </div>
             </div>
             </Box>

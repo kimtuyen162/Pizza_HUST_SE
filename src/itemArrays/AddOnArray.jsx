@@ -8,7 +8,7 @@ export const SizeArray =[
         value:90000
     },
     {
-        title:"Small",
+        title:"Large",
         value:140000
     }
 ];

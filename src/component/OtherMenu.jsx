@@ -6,6 +6,11 @@ import { Icon } from '@iconify/react';
 function OtherMenu(props)
 {
 
+    function handleClick(item)
+    {
+        props.addOther(item);
+    }
+
     return <div className="otherWrapper">
         <Grid container spacing={2} align="center">
         {props.choice.map((item,index)=>{
@@ -34,7 +39,8 @@ function OtherMenu(props)
                 sx={{ 
                     border:1,color:'#550312',borderRadius:'40px', 
                     borderColor:'#550312',maxHeight:'100px',
-                    }}>
+                    }}
+                onClick={()=>{handleClick(item)}}>
                 <h3>Add to Cart</h3>
             </Button>
             </CardActions>
