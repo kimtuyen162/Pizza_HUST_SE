@@ -19,7 +19,7 @@ function SelectionBar(props)
 
     return <div className={fix ? 'fixedBar' : 'normalBar'}>
         <div className="barWrapper">
-        <Grid container spacing={2} align="center" sx={{maxWidth:'100%',ml:2}}>
+        <Grid container spacing={2} align="center" sx={{width:'80%',ml:2}}>
             {selections.map((item,index)=>{
                 return <Grid item key={index} xs={6} md={3}><Link to={`/menu/${item}`}>
                 <Button

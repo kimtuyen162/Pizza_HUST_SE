@@ -38,7 +38,7 @@ function OtherMenu(props)
             <Button
                 sx={{ 
                     border:1,color:'#550312',borderRadius:'40px', 
-                    borderColor:'#550312',maxHeight:'100px',
+                    borderColor:'#550312',maxHeight:'50px',
                     }}
                 onClick={()=>{handleClick(item)}}>
                 <h3>Add to Cart</h3>

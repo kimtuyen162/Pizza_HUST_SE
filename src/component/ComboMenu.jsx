@@ -17,7 +17,7 @@ function ComboMenu(props)
     return <div className="comboWrapper">
         <Grid container spacing={2} align="center">
         {ComboArray.map((item,index)=>{
-            return <Grid key={index} item xs={12} md={6} justifyItems={'center'}>
+            return <Grid key={index} item xs={12} sm={6} md={4} justifyItems={'center'}>
             <Card style={{ border: "2px solid #FFBE41" }} sx={{maxHeight:'600px' ,borderRadius:"50px"}}>
             <CardMedia
                 component="img"
@@ -42,7 +42,7 @@ function ComboMenu(props)
                 onClick={()=>{handleClick(item)}} 
                 sx={{
                     border:1,color:'#550312',borderRadius:'40px', 
-                    borderColor:'#550312',maxHeight:'100px',
+                    borderColor:'#550312',maxHeight:'50px',
                     }}>
                 <h3>Add to Cart</h3>
             </Button>

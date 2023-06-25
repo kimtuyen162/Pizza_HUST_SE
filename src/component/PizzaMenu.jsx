@@ -7,7 +7,7 @@ import { CrustArray,SizeArray } from "../itemArrays/AddOnArray";
 import React,{useState} from "react";
 import "../style/layout.css"
 
-function CardItem(props)
+function PizzaMenu(props)
 {
 
     const modalStyle = {
@@ -89,7 +89,7 @@ function CardItem(props)
                 onClick={event => handleOpen(event,item)}
                 sx={{ 
                     border:1,color:'#550312',borderRadius:'40px', 
-                    borderColor:'#550312',maxHeight:'100px',
+                    borderColor:'#550312',maxHeight:'50px',
                     }}>
                 <h3>Add to Cart</h3>
             </Button>
@@ -177,4 +177,4 @@ function CardItem(props)
     </div>
 }
 
-export default CardItem;
+export default PizzaMenu;

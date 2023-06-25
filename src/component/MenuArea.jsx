@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router";
-import CardItem from "./CardItem"
+import PizzaMenu from "./PizzaMenu";
 import ComboMenu from "./ComboMenu";
 import OtherMenu from "./OtherMenu";
 import { DrinkArray,StarterArray } from "../itemArrays/OtherArray";
@@ -18,7 +18,7 @@ function MenuArea(props){
         case 'Combo':
           return <div className="itemList"><ComboMenu addCombo={addItem} /></div>;
         case 'Pizza':
-          return <div className="itemList"><CardItem addPizza={addItem}/></div>;
+          return <div className="itemList"><PizzaMenu addPizza={addItem}/></div>;
         case 'Drinks':
           return <div className="itemList"><OtherMenu addOther={addItem} choice={DrinkArray}/></div>;
         default:
