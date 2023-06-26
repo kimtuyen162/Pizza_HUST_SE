@@ -6,7 +6,6 @@ import { Outlet } from "react-router";
 
 function MenuLayOut(props){
 
-
     return <div className="topWarpper">
         <Header calTotal={props.calTotal}/>
         <Outlet/>
