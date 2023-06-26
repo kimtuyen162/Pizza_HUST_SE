@@ -5,6 +5,7 @@ import MenuArea from "./component/MenuArea";
 import { Route,Routes } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import { useState } from "react";
+import Checkout from "./component/Checkout";
 
 function MenuPage() {
 
@@ -19,8 +20,8 @@ function MenuPage() {
     }, item.price))
   }
 
-  console.log(cart);
-  console.log(total);
+  // console.log(cart);
+  // console.log(total);
 
   return (
     <div className="App" >
@@ -29,6 +30,7 @@ function MenuPage() {
         <Routes>
             <Route path="/" element={<MenuLayOut calTotal={total}/>}>
             <Route path="/menu/:itemChosed" element={<MenuArea addCart={addNew}/>}/>
+            <Route path="/menu/checkout" element={<Checkout />}/>
             </Route>
         </Routes>
         </BrowserRouter>
