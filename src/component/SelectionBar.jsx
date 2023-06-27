@@ -1,27 +1,24 @@
 import React, { useState } from "react";
-import { Button, Grid, Modal, Box } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
-// import Checkout from "./Checkout";
+import SidebarCart from "./SidebarCart";
 
 function SelectionBar(props) {
-  const modalStyle = {
-    position: "relative",
-    top: "50%",
-    left: "50%",
-    mr: "350px",
-    transform: "translate(-50%, -50%)",
-    backgroundColor: "white",
-    border: "2px solid #FFBE41",
-    boxShadow: 24,
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+  const closeSidebar = () => {
+    setIsSidebarOpen(false);
   };
 
   const total = props.calTotal;
-
+  
   const selections = ["Combo", "Pizza", "Starters", "Drinks"];
 
   const [fix, setFixed] = useState(false);
-  const [open, setOpen] = useState(false);
 
   function setFix() {
     if (window.scrollY >= 66) setFixed(true);
@@ -29,15 +26,7 @@ function SelectionBar(props) {
   }
   window.addEventListener("scroll", setFix);
 
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
+  
   return (
     <div className={fix ? "fixedBar" : "normalBar"}>
       <div className="barWrapper">
@@ -60,6 +49,7 @@ function SelectionBar(props) {
                       height: "100%",
                       width: "100%",
                     }}
+                    onClick={closeSidebar}
                   >
                     {item}
                   </Button>
@@ -77,7 +67,8 @@ function SelectionBar(props) {
               borderRadius: "40px",
               borderColor: "#550312",
             }}
-            onClick={handleOpen}
+            className="toggle-btn"
+            onClick={toggleSidebar}
           >
             <div className="totalWrapper">{total}</div>
             <div className="iconWrapper">
@@ -91,25 +82,9 @@ function SelectionBar(props) {
               />
             </div>
           </Button>
+          {isSidebarOpen && <SidebarCart onCloseSidebar={closeSidebar} cartItems={props.addCart} total={total} removeFromCart={props.removeFromCart}/>}
         </div>
-      </div>
-      <Modal open={open} onClose={handleClose}>
-        <Box sx={modalStyle}>
-          <div>
-            <div className="totalWrapper">
-              <h4>Selected Items:</h4>
-              
-              <h3>Total: {total}</h3>
-            </div>
-            <Button variant="contained" onClick={handleClose}>
-              Close
-            </Button>
-            <Link to="/menu/checkout" >
-              <Button variant="contained" onClick={handleClose}>Check out</Button>
-            </Link>
-          </div>
-        </Box>
-      </Modal>
+      </div>     
     </div>
   );
 }

@@ -1,15 +1,21 @@
 import React from "react";
 import SelectionBar from "./SelectionBar";
 
-
-function Header(props){
-    return <div className="headerContainer">
-        <div className="headerLogoContainer">
+function Header(props) {
+  // console.log(props.addCart);
+  return (
+    <div className="headerContainer">
+      <div className="headerLogoContainer">
         <h1 className="menuTitle">Our Menu</h1>
         <div className="logoLine"></div>
-        </div>
-        <SelectionBar calTotal={props.calTotal}/>
+      </div>
+      <SelectionBar
+        calTotal={props.calTotal}
+        addCart={props.addCart}
+        removeFromCart={props.removeFromCart}
+      />
     </div>
+  );
 }
 
 export default Header;
