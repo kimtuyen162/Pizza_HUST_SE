@@ -17,9 +17,10 @@ const comboSchema = new Schema({
   combo_description:{
     type: String,
   },
-  starters:[
-    { type: Schema.Types.ObjectId, ref: 'Starter' }
-  ],
+  starters:[{
+    starter: { type: Schema.Types.ObjectId, ref: 'Starter' },
+    quantity: { type: Number, require: true }
+  }],
   pizzas:[{
     size: { type: Schema.Types.ObjectId, ref: 'Size' },
     crust: { type: Schema.Types.ObjectId, ref: 'Crust' },

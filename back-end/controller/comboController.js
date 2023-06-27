@@ -32,27 +32,22 @@ const getCombo = async (req, res) => {
 const createCombo = async (req, res) => {
   const {combo_name, combo_price, image, combo_description, starters, pizzas} = req.body
 
-  const populatedPizzas = [];
+  const orderedPizzas = [];
 
-  pizzas.forEach((orderedPizza) =>{
-    console.log(orderedPizza);
-  })
-  
   for (const orderedPizza of pizzas){
-    console.log(orderedPizza);
     const { size, crust, pizza, quantity } = orderedPizza;
 
-    const populatedPizza = {
+    const orderedPizza = {
       size: await Size.findById(size).exec(),
       crust: await Crust.findById(crust).exec(),
       pizza: await Pizza.findById(pizza).exec(),
       quantity: quantity
     }
-    populatedPizzas.push(populatedPizza);
+    orderedPizzas.push(orderedPizza);
   }
 
   try{
-    const newCombo = await Combo.create({combo_name, combo_price, image, combo_description, pizzas: populatedPizzas})
+    const newCombo = await Combo.create({combo_name, combo_price, image, combo_description, pizzas: orderedPizzas})
     res.status(200).json(newCombo)
   }
   catch(error){
