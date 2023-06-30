@@ -12,22 +12,75 @@ function MenuPage() {
 
   const [cart,setCart] = useState([]);
 
+
+  function isinCart(item){
+    switch(item.type){
+      case "combo":
+        const checkcombo =cart.some((element)=>{
+          if (JSON.stringify(item.order_combo)===JSON.stringify(element.order_combo))
+          {
+            element.quantity++;
+            return true;
+          }
+          else return false;
+        });
+        return checkcombo;
+      case "pizza":
+        const checkpizza =cart.some((element)=>{
+          if ((JSON.stringify(item.order_pizza)===JSON.stringify(element.order_pizza))&&
+          (JSON.stringify(item.order_size)===JSON.stringify(element.order_size))&&
+          (JSON.stringify(item.order_crust)===JSON.stringify(element.order_crust)))
+          {
+            element.quantity++;
+            return true;
+          }
+          else return false;
+        });
+        return checkpizza;
+      case "drink":
+        const checkdrink =cart.some((element)=>{
+          if (JSON.stringify(item.order_drink)===JSON.stringify(element.order_drink))
+          {
+            element.quantity++;
+            return true;
+          }
+          else return false;
+        });
+        return checkdrink;
+      default:
+        const checkstarter =cart.some((element)=>{
+          if (JSON.stringify(item.order_starter)===JSON.stringify(element.order_starter))
+          {
+            element.quantity++;
+            return true;
+          }
+          else return false;
+        });
+        return checkstarter;
+    }
+  }
+
   function addNew(item){
-    setCart(oldCart => [...oldCart, item]);
-    setTotal( cart.reduce(function(prev, current) {
-      return prev +current.price
-    }, item.price))
+
+    setTotal(total+item.price);
+
+    switch(isinCart(item)){
+      case false:
+        setCart(oldCart => [...oldCart, item]);
+        break;
+      default:
+        break;
+    }
   }
 
   console.log(cart);
-  console.log(total);
 
   return (
     <div className="App" >
       
         <BrowserRouter>
         <Routes>
-            <Route path="/" element={<MenuLayOut calTotal={total}/>}>
+            <Route path="/" element={<MenuLayOut calTotal={total} customerCart={cart} cartTotal={total} />}>
             <Route path="/menu/:itemChosed" element={<MenuArea addCart={addNew}/>}/>
             </Route>
         </Routes>

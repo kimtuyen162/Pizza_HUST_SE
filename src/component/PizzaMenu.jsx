@@ -2,8 +2,8 @@ import { Card,CardActions,CardContent,CardMedia,Grid,Button,
 Modal,Box,Typography, NativeSelect,InputLabel
 ,FormControl} from "@mui/material";
 import { Icon } from '@iconify/react';
-import { PizzaArray } from "../itemArrays/PizzaArray";
-import { CrustArray,SizeArray } from "../itemArrays/AddOnArray";
+import { PizzaArray } from "../itemArr/PizzaArray";
+import { CrustArray,SizeArray } from "../itemArr/AddOnArray";
 import React,{useState} from "react";
 import "../style/layout.css"
 
@@ -23,48 +23,53 @@ function PizzaMenu(props)
 
     
 
-    const [crust,setCrust]=useState(CrustArray[0]);
-    const [size,setSize]=useState(SizeArray[0]);
-    const [it, setIt] = React.useState(PizzaArray[0]);
+    const [crust,setCrust]=useState(0);
+    const [size,setSize]=useState(0);
+    const [it, setIt] = React.useState(0);
     const [open, setOpen] = React.useState(false);
     const handleOpen = (event,item) => {
         setIt(item);
-        setCrust(CrustArray[0]);
-        setSize(SizeArray[0]);
+        setCrust(0);
+        setSize(0);
         setOpen(true);
     }
     function handleClose()
     {
-        setCrust(CrustArray[0]);
-        setSize(SizeArray[0]);
+        setCrust(0);
+        setSize(0);
         setOpen(false);
     }
 
-    function handleChangeCrust(event){
-        setCrust(CrustArray[event.target.value]);
+    const handleChangeCrust=(event)=>{
+        setCrust(event.target.value);
     }
 
-    function handleChangeSize(event){
-        setSize(SizeArray[event.target.value]);
-    }
+    const handleChangeSize=(event)=>{setSize(event.target.value)}
 
     function handleClick(item)
     {
-        const selectedPizza={
-            selPizza:item,
-            selCrust:crust,
-            selSize:size,
-            price:(item.price + crust.value + size.value)
+        const selPizza=PizzaArray.find((pizza)=>{return pizza.pizza_id===parseInt(item.pizza_id);})
+        const selCrust=CrustArray.find(item => item.crust_id===parseInt(crust))
+        const selSize=SizeArray.find((item)=>{return item.size_id===parseInt(size);})
+
+        const select_pizza={
+            name:selPizza.pizza_name,
+            type:"pizza",
+            order_pizza:selPizza,
+            order_crust:selCrust,
+            order_size:selSize,
+            price:(selPizza.pizza_price + selCrust.crust_price + selSize.size_price),
+            quantity:1
         }
-        props.addPizza(selectedPizza);
+        props.addPizza(select_pizza);
     }
         
 
     return <div className="cardWrapper">
 
         <Grid container spacing={2} align="center">
-        {PizzaArray.map((item,index)=>{
-            return <Grid key={index} item xs={12} sm={6} md={3} justifyItems={'center'}>
+        {PizzaArray.map((item)=>{
+            return <Grid key={item.pizza_id} item xs={12} sm={6} md={3} justifyItems={'center'}>
             <Card style={{ border: "2px solid #FFBE41" }} sx={{maxHeight:'600px' ,borderRadius:"50px"}}>
             <CardMedia
                 component="img"
@@ -75,13 +80,13 @@ function PizzaMenu(props)
             <CardContent sx={{pb:0}}>
 
                 <div className="descriptionWrapper">
-                    <h2>{item.title}</h2>
-                    <p>{item.desciption}</p>
+                    <h2>{item.pizza_name}</h2>
+                    <div>{item.pizza_description}</div>
                 </div>
 
                 <div className="priceTag">
                     <div className="iconWrapper"><Icon style={{fontSize:'30px', color:'#FFBE41'}} icon="si-glyph:money-coin"/></div>
-                    <div className="priceWrapper"><h2>{item.price}</h2></div>
+                    <div className="priceWrapper"><h2>{item.pizza_price}</h2></div>
                 </div>
             </CardContent>
             <CardActions sx={{justifyContent:"center"}}>
@@ -113,10 +118,10 @@ function PizzaMenu(props)
             <img src={it.image} alt="pizza"/>
             <div className="modalContentWrapper">
             <Typography id="modal-modal-title" sx={{ mt: 2, mx:2 }} style={{color:"#550312"}} variant="h4" component="h2">
-                {it.title}
+                {it.pizza_name}
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2, mx:2 }}>
-                {it.desciption}
+                {it.pizza_description}
             </Typography>
 
             <div className="optionPane">
@@ -134,8 +139,8 @@ function PizzaMenu(props)
                 id: 'uncontrolled-native',
                 }}
             >
-                {SizeArray.map((item,index)=>{
-                    return <option key={index} value={index}>{item.title}</option>
+                {SizeArray.map((item)=>{
+                    return <option key={item.size_id} value={item.size_id}>{item.size_name}</option>
                 })}
             </NativeSelect>
             </FormControl>
@@ -152,10 +157,9 @@ function PizzaMenu(props)
                 inputProps={{
                 name: 'crust',
                 id: 'uncontrolled-native',
-                }}
-            >
-                {CrustArray.map((item,index)=>{
-                    return <option key={index} value={index}>{item.title}</option>
+                }}>
+                {CrustArray.map((item)=>{
+                    return <option key={item.crust_id} value={item.crust_id}>{item.crust_name}</option>
                 })}
             </NativeSelect>
             </FormControl>

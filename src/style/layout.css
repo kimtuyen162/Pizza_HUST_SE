@@ -92,6 +92,13 @@
     margin:0;
 }
 
+.descriptionWrapper div{
+    margin-left: 10px;
+    margin-right: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 
 .modalWrapper{
     display: flex;
@@ -122,4 +129,99 @@
     margin-right: 5px; 
     font-family: poppins;
     font-size: 16px;
+}
+
+.cartTitleWrapper{
+    top: 0 ;
+    text-align: center;
+    height: fit-content;
+    width:100%;
+    color: #550312;
+    font-family: poppins;
+    margin:0;
+}
+
+.cartTitleWrapper h1{
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+.insideCart{
+
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.cartContent{
+    height: 66%;
+}
+
+.cartItem {
+    align-items: center;
+    width:100%;
+    display: grid;
+    grid-template-columns: 10% 10% 50% 30%;
+}   
+
+.arrowWrapper{
+    margin: auto;
+    text-align: center;
+    margin-right: 5px;
+    font-size: 20px;
+    width: 100%;
+}
+
+.amountWrapper{
+    margin-right: 5px;
+    width:100%;
+}
+.nameWrapper{
+    font-size: larger;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.cartSubitem
+{
+    text-align: left;
+    margin-left:30px;
+}
+.cartCombo
+{
+    margin-top: 5px;
+    display: grid;
+    grid-template-columns: 10% 10% 80%;
+}
+
+.cartCombo div{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.comboPizzaAddOn{
+    width: 70%;
+    margin-left:20px;
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.comboPizzaAddOn div{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.cartPizza{
+    display: grid;
+    grid-template-columns: 10% 60% 30%;
+}
+
+.cartPizza div{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

@@ -2,8 +2,8 @@ import React from "react";
 import { useParams } from "react-router";
 import PizzaMenu from "./PizzaMenu";
 import ComboMenu from "./ComboMenu";
-import OtherMenu from "./OtherMenu";
-import { DrinkArray,StarterArray } from "../itemArrays/OtherArray";
+import DrinkMenu from "./DrinkMenu";
+import StarterMenu from "./StarterMenu";
 
 function MenuArea(props){
 
@@ -22,9 +22,9 @@ function MenuArea(props){
         case 'Pizza':
           return <PizzaMenu addPizza={addItem}/>;
         case 'Drinks':
-          return <OtherMenu addOther={addItem} choice={DrinkArray}/>;
+          return <DrinkMenu addDrink={addItem} />;
         default:
-          return <OtherMenu  addOther={addItem} choice={StarterArray}/>;
+          return <StarterMenu  addStarter={addItem}/>;
         }
         })()}
     </div>

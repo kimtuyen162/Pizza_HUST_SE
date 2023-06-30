@@ -17,6 +17,8 @@ function SelectionBar(props)
     }
     window.addEventListener("scroll",setFix);
 
+    const handleClick= ()=>{props.openCart()}
+
     return <div className={fix ? 'fixedBar' : 'normalBar'}>
         <div className="barWrapper">
         <Grid container spacing={2} align="center" sx={{width:'80%',ml:2}}>
@@ -32,7 +34,7 @@ function SelectionBar(props)
             })}
         </Grid>
         <div className="checkoutWrapper">
-            <Button sx={{mr:2,border:1,color:'#550312',borderRadius:'40px',borderColor:'#550312'}}>
+            <Button onClick={handleClick} sx={{mr:2,border:1,color:'#550312',borderRadius:'40px',borderColor:'#550312'}}>
                 <div className="totalWrapper">{total}</div>
                 <div className="iconWrapper">
                 <Icon style={{fontSize:'25px', color:'#FFBE41', verticalAlign:'middle'}} icon="gridicons:cart"/>

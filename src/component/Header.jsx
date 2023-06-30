@@ -8,7 +8,7 @@ function Header(props){
         <h1 className="menuTitle">Our Menu</h1>
         <div className="logoLine"></div>
         </div>
-        <SelectionBar calTotal={props.calTotal}/>
+        <SelectionBar calTotal={props.calTotal} openCart={props.openCart}/>
     </div>
 }
 
