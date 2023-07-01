@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
-import SidebarCart from "./SidebarCart";
 
 function SelectionBar(props) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -15,27 +14,19 @@ function SelectionBar(props) {
   };
 
   const total = props.calTotal;
-  
+
   const selections = ["Combo", "Pizza", "Starters", "Drinks"];
 
   const [fix, setFixed] = useState(false);
 
-  function setFix() {
-    if (window.scrollY >= 66) setFixed(true);
-    else setFixed(false);
-  }
-  window.addEventListener("scroll", setFix);
+  const handleClick = () => {
+    props.openCart();
+  };
 
-  
   return (
     <div className={fix ? "fixedBar" : "normalBar"}>
       <div className="barWrapper">
-        <Grid
-          container
-          spacing={2}
-          align="center"
-          sx={{ maxWidth: "100%", ml: 2 }}
-        >
+        <Grid container spacing={2} align="center" sx={{ width: "80%", ml: 2 }}>
           {selections.map((item, index) => {
             return (
               <Grid item key={index} xs={6} md={3}>
@@ -60,6 +51,7 @@ function SelectionBar(props) {
         </Grid>
         <div className="checkoutWrapper">
           <Button
+            onClick={handleClick}
             sx={{
               mr: 2,
               border: 1,
@@ -67,8 +59,6 @@ function SelectionBar(props) {
               borderRadius: "40px",
               borderColor: "#550312",
             }}
-            className="toggle-btn"
-            onClick={toggleSidebar}
           >
             <div className="totalWrapper">{total}</div>
             <div className="iconWrapper">
@@ -82,9 +72,8 @@ function SelectionBar(props) {
               />
             </div>
           </Button>
-          {isSidebarOpen && <SidebarCart onCloseSidebar={closeSidebar} cartItems={props.addCart} total={total} removeFromCart={props.removeFromCart}/>}
         </div>
-      </div>     
+      </div>
     </div>
   );
 }

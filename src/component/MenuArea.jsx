@@ -1,9 +1,9 @@
 import React from "react";
 import { useParams } from "react-router";
-import CardItem from "./CardItem"
+import PizzaMenu from "./PizzaMenu";
 import ComboMenu from "./ComboMenu";
-import OtherMenu from "./OtherMenu";
-import { DrinkArray,StarterArray } from "../itemArrays/OtherArray";
+import DrinkMenu from "./DrinkMenu";
+import StarterMenu from "./StarterMenu";
 
 function MenuArea(props){
 
@@ -14,16 +14,21 @@ function MenuArea(props){
       props.addCart(item);
     } 
     
-    switch(itemChosed) {
+    return <div className="itemList">
+      {(() => {
+        switch(itemChosed) {
         case 'Combo':
-          return <div className="itemList"><ComboMenu addCombo={addItem} /></div>;
+          return <ComboMenu addCombo={addItem} />;
         case 'Pizza':
-          return <div className="itemList"><CardItem addPizza={addItem}/></div>;
+          return <PizzaMenu addPizza={addItem}/>;
         case 'Drinks':
-          return <div className="itemList"><OtherMenu addOther={addItem} choice={DrinkArray}/></div>;
+          return <DrinkMenu addDrink={addItem} />;
         default:
-          return <div className="itemList"><OtherMenu  addOther={addItem} choice={StarterArray}/></div>;
+          return <StarterMenu  addStarter={addItem}/>;
         }
+        })()}
+    </div>
+        
     }
 
 export default MenuArea;
