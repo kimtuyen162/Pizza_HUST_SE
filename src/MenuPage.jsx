@@ -74,6 +74,7 @@ function MenuPage() {
   }
 
   function deleteItem(item){
+    setTotal(total-item.price*item.quantity)
     setCart((current) =>
     current.filter((cartitem) => JSON.stringify(cartitem) !== JSON.stringify(item))
   );
