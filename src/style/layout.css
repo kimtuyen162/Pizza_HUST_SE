@@ -225,3 +225,8 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+.deleteWrapper{
+    margin-top: 5px;
+    margin-bottom: auto;
+}

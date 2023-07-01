@@ -73,14 +73,18 @@ function MenuPage() {
     }
   }
 
-  console.log(cart);
+  function deleteItem(item){
+    setCart((current) =>
+    current.filter((cartitem) => JSON.stringify(cartitem) !== JSON.stringify(item))
+  );
+  }
 
   return (
     <div className="App" >
       
         <BrowserRouter>
         <Routes>
-            <Route path="/" element={<MenuLayOut calTotal={total} customerCart={cart} cartTotal={total} />}>
+            <Route path="/" element={<MenuLayOut calTotal={total} customerCart={cart} cartTotal={total} deleteItem={deleteItem}/>}>
             <Route path="/menu/:itemChosed" element={<MenuArea addCart={addNew}/>}/>
             </Route>
         </Routes>

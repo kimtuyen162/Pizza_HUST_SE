@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../style/layout.css"
-import { Button, Collapse, Drawer, List, ListItem } from "@mui/material";
+import { Button, Collapse, Drawer, IconButton, List, ListItem } from "@mui/material";
 import { Icon } from "@iconify/react";
 import CartCollapse from "./CartCollapse";
 
@@ -12,6 +12,11 @@ function MyCart(props){
 
     function handleClose(){
         props.closeCart();
+    }
+
+    function handleClickDelete(item)
+    {
+        props.deleteItem(item);
     }
 
     return <div className="cartWrapper">
@@ -28,7 +33,7 @@ function MyCart(props){
                         return<ListItem key={index} sx={{p:0}}>
                             <Button 
                             onClick={()=>setOpen(open === index ? -1 :index)}
-                            sx={{textTransform:"none",width:"100%",color:"#550312",display:"block"}}>
+                            sx={{textTransform:"none",width:"100%",color:"#550312",display:"block",p:0}}>
                                 <div className="cartItem">
                                     <div className="arrowWrapper">
                                         {open===index ? 
@@ -44,6 +49,13 @@ function MyCart(props){
                                     <CartCollapse item={item}/>
                                 </Collapse>
                             </Button>
+                            <div className="deleteWrapper">
+                                <IconButton 
+                                onClick={()=>handleClickDelete(item)}
+                                sx={{width:"100%",color:"#550312",fontSize:"15px"}}>
+                                <Icon icon="mdi:trash-can"/>
+                                </IconButton>
+                            </div>
                         </ListItem>})}
                     </List>
                 </div>

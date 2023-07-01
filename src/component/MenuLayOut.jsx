@@ -14,7 +14,12 @@ function MenuLayOut(props){
 
     return <div className="topWarpper">
         <Header calTotal={props.calTotal} openCart={openCart}/>
-        <MyCart setCart ={cartOpen} closeCart={closeCart} customerCart={props.customerCart} cartTotal={props.cartTotal}/>
+        <MyCart setCart ={cartOpen} 
+        closeCart={closeCart} 
+        customerCart={props.customerCart} 
+        cartTotal={props.cartTotal}
+        deleteItem={props.deleteItem}
+        />
         <Outlet/>
     </div>
 }
