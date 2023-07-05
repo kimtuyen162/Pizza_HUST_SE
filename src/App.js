@@ -3,8 +3,8 @@ import MenuPage from "./MenuPage";
 
 function App() {
   return (
-    <div className="App" >
-      <MenuPage/>
+    <div className="App">
+      <MenuPage />
     </div>
   );
 }
