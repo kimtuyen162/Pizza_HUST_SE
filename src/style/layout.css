@@ -132,6 +132,8 @@
 }
 
 .cartTitleWrapper{
+    display:grid;
+    grid-template-columns: 20% 60%;
     top: 0 ;
     text-align: center;
     height: fit-content;

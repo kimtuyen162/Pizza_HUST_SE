@@ -20,6 +20,12 @@ body{
     height: 100%;
 }
 
+.cartCellFull {
+    width: 100%;
+    background-color: #FFBE41;
+    height: 100%;   
+}
+
 .returnButtonWrapper {
     display: flex;
     align-items: center;
@@ -57,6 +63,11 @@ body{
     overflow-y: auto;
     font-family: poppins;
     margin-left: 40%;
+}
+
+.formCellFull{
+    font-family: poppins;
+    width: 100%;
 }
 
 

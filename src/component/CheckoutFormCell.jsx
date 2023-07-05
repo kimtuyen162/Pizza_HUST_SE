@@ -10,9 +10,14 @@ import {
   RadioGroup,
   TextField,
 } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import React, { useState } from "react";
 
 function CheckoutFormCell() {
+  const theme = useTheme();
+  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
+
   const [selectValue, setSelectValue] = useState(paymentArray[0].payment_name);
   const [fullname, setFullname] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -36,7 +41,7 @@ function CheckoutFormCell() {
   }
 
   return (
-    <div className="formCell">
+    <div className={isMdUp ? "formCell" : "formCellFull"}>
       <div className="headerWrapper">
         <h1>--Checkout--</h1>
       </div>

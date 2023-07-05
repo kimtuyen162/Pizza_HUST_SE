@@ -2,12 +2,16 @@ import { Icon } from "@iconify/react";
 import { Button, Collapse, IconButton, List, ListItem } from "@mui/material";
 import CartCollapse from "./CartCollapse";
 import React, { useState } from "react";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { Link } from "react-router-dom";
 
 function CheckoutCartCell(props) {
   const [open, setOpen] = useState(-1);
+  const theme = useTheme();
+  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
   return (
-    <div className="cartCellContainer">
+    <div className={isMdUp ? "cartCellContainer" : "cartCellFull"}>
       <div className="returnButtonWrapper">
         <Link to={"/menu/Combo"}>
           <IconButton sx={{ color: "#550312" }}>

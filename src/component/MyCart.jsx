@@ -8,12 +8,17 @@ import {
   List,
   ListItem,
 } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import { Icon } from "@iconify/react";
 import CartCollapse from "./CartCollapse";
 import { Link } from "react-router-dom";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 function MyCart(props) {
+  const theme = useTheme();
   const [open, setOpen] = useState(-1);
+
+  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
 
   const isOpen = props.setCart;
 
@@ -29,7 +34,7 @@ function MyCart(props) {
     <div className="cartWrapper">
       <Drawer
         PaperProps={{
-          sx: { width: "30%" },
+          sx: { width: isMdUp ? "30%" : "100%" },
         }}
         anchor="right"
         open={isOpen}
@@ -37,6 +42,9 @@ function MyCart(props) {
       >
         <div className="insideCart">
           <div className="cartTitleWrapper">
+            <IconButton sx={{ m: 1, color: "#550312" }} onClick={handleClose}>
+              <Icon icon={"oi:x"} />
+            </IconButton>
             <h1>My Cart</h1>
           </div>
           <div className="cartContent">
