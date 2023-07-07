@@ -13,31 +13,48 @@ import {
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 
 function CheckoutFormCell() {
+  const today = new Date();
+  today.setMinutes(today.getMinutes() + 20);
+  const time =
+    today.getHours() +
+    ":" +
+    today.getMinutes().toLocaleString("en-US", {
+      minimumIntegerDigits: 2,
+      useGrouping: false,
+    });
+
   const theme = useTheme();
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
 
+  const navigate = useNavigate();
+
+  const [emptyField, setEmptyField] = useState(false);
   const [selectValue, setSelectValue] = useState(paymentArray[0].payment_name);
   const [fullname, setFullname] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [notes, setNotes] = useState("");
-  const [delitime, setDelitime] = useState("");
+  const [delitime, setDelitime] = useState(time);
 
   function handleselectChange(event) {
     setSelectValue(event.target.value);
   }
 
   function handleClick() {
-    console.log(fullname);
-    console.log(phoneNumber);
-    console.log(email);
-    console.log(delitime);
-    console.log(address);
-    console.log(notes);
-    console.log(selectValue);
+    if (
+      (address === "") |
+      (phoneNumber === "") |
+      (email === "") |
+      (fullname === "")
+    )
+      setEmptyField(true);
+    else {
+      navigate("/menu/Combo");
+    }
   }
 
   return (
@@ -63,6 +80,8 @@ function CheckoutFormCell() {
             label="Your Address"
             sx={{ width: "90%", m: 1 }}
             size="small"
+            error={emptyField}
+            helperText={emptyField ? "Please this field" : ""}
           />
         </div>
         <div className="inputWrapper">
@@ -72,6 +91,7 @@ function CheckoutFormCell() {
           />
           <TextField
             label="Instruction notes for shipping"
+            defaultValue={notes}
             onChange={(e) => setNotes(e.target.value)}
             sx={{ width: "90%", m: 1 }}
             size="small"
@@ -87,11 +107,16 @@ function CheckoutFormCell() {
             style={{ margin: "20px", marginRight: "0" }}
           />
           <TextField
-            sx={{ width: "40%", m: 1 }}
+            defaultValue={delitime}
+            variant="filled"
+            sx={{ width: "40%", m: 1, mb: 2 }}
             onChange={(e) => setDelitime(e.target.value)}
             size="small"
             type="time"
           />
+          <i style={{ fontSize: "12px" }}>
+            (Please specify the delivery time of your choice)
+          </i>
         </div>
       </Paper>
       <Paper
@@ -119,6 +144,8 @@ function CheckoutFormCell() {
               onChange={(e) => setFullname(e.target.value)}
               sx={{ width: "90%", m: 2, mt: 0 }}
               size="small"
+              error={emptyField}
+              helperText={emptyField ? "Please this field" : ""}
             />
           </div>
           <div className="inputWrapper">
@@ -128,6 +155,8 @@ function CheckoutFormCell() {
               onChange={(e) => setPhoneNumber(e.target.value)}
               sx={{ width: "90%", m: 2 }}
               size="small"
+              error={emptyField}
+              helperText={emptyField ? "Please this field" : ""}
             />
           </div>
           <div className="inputWrapper">
@@ -137,6 +166,8 @@ function CheckoutFormCell() {
               label="Email"
               sx={{ width: "90%", m: 2 }}
               size="small"
+              error={emptyField}
+              helperText={emptyField ? "Please this field" : ""}
             />
           </div>
         </div>

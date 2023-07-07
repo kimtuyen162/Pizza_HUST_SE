@@ -6,11 +6,19 @@ import CheckoutPage from "./page/CheckoutPage";
 import { Route, Routes } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import { useState } from "react";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 function MenuPage() {
   const [total, setTotal] = useState(0);
 
   const [cart, setCart] = useState([]);
+
+  const [noti, setNoti] = useState(false);
 
   function isinCart(item) {
     switch (item.type) {
@@ -75,6 +83,7 @@ function MenuPage() {
       default:
         break;
     }
+    setNoti(true);
   }
 
   function deleteItem(item) {
@@ -85,6 +94,14 @@ function MenuPage() {
       )
     );
   }
+
+  const handleCloseNoti = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setNoti(false);
+  };
 
   return (
     <div className="App">
@@ -113,6 +130,20 @@ function MenuPage() {
           />
         </Routes>
       </BrowserRouter>
+      <Snackbar
+        open={noti}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        autoHideDuration={2000}
+        onClose={handleCloseNoti}
+      >
+        <Alert
+          onClose={handleCloseNoti}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          Item added to your cart!
+        </Alert>
+      </Snackbar>
     </div>
   );
 }

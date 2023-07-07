@@ -8,15 +8,23 @@ import {
   List,
   ListItem,
 } from "@mui/material";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 import { useTheme } from "@mui/material/styles";
 import { Icon } from "@iconify/react";
 import CartCollapse from "./CartCollapse";
 import { Link } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 function MyCart(props) {
   const theme = useTheme();
   const [open, setOpen] = useState(-1);
+
+  const [noti, setNoti] = useState(false);
 
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
 
@@ -29,6 +37,18 @@ function MyCart(props) {
   function handleClickDelete(item) {
     props.deleteItem(item);
   }
+
+  function handleClick() {
+    setNoti(true);
+  }
+
+  const handleCloseNoti = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setNoti(false);
+  };
 
   return (
     <div className="cartWrapper">
@@ -105,8 +125,9 @@ function MyCart(props) {
               })}
             </List>
           </div>
-          <Link to="/checkout">
+          {props.customerCart.length === 0 ? (
             <Button
+              onClick={handleClick}
               sx={{
                 m: 4,
                 bottom: 0,
@@ -123,9 +144,43 @@ function MyCart(props) {
             >
               Checkout {props.cartTotal} VND
             </Button>
-          </Link>
+          ) : (
+            <Link to="/checkout">
+              <Button
+                sx={{
+                  m: 4,
+                  bottom: 0,
+                  width: "82%",
+                  backgroundColor: "#550312",
+                  border: 1,
+                  color: "white",
+                  borderRadius: "40px",
+                  ":hover": {
+                    bgcolor: "white",
+                    color: "#550312",
+                  },
+                }}
+              >
+                Checkout {props.cartTotal} VND
+              </Button>
+            </Link>
+          )}
         </div>
       </Drawer>
+      <Snackbar
+        open={noti}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        autoHideDuration={4000}
+        onClose={handleCloseNoti}
+      >
+        <Alert
+          onClose={handleCloseNoti}
+          severity="error"
+          sx={{ width: "100%" }}
+        >
+          Your Cart is Empty !
+        </Alert>
+      </Snackbar>
     </div>
   );
 }

@@ -56,7 +56,12 @@ function SelectionBar(props) {
               borderColor: "#550312",
             }}
           >
-            <div className="totalWrapper">{total}</div>
+            <div className="totalWrapper">
+              {new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+              }).format(total)}
+            </div>
             <div className="iconWrapper">
               <Icon
                 style={{
