@@ -4,10 +4,6 @@ export const paymentArray = [
     image: require("../image/cash.png"),
   },
   {
-    payment_name: "Momo",
-    image: require("../image/momo.png"),
-  },
-  {
     payment_name: "VNPay",
     image: require("../image/vnpay.png"),
   },
