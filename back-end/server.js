@@ -7,6 +7,8 @@ const sizeRoutes = require('./routes/sizeRouter')
 const comboRoutes = require('./routes/comboRouter')
 const drinkRoutes = require('./routes/drinkRouter')
 const starterRoutes = require('./routes/starterRouter')
+const userRoutes = require('./routes/userRouter')
+
 
 //express app
 const app = express()
@@ -21,6 +23,7 @@ app.use('/api', sizeRoutes)
 app.use('/api', comboRoutes)
 app.use('/api', drinkRoutes)
 app.use('/api', starterRoutes)
+app.use('/api', userRoutes)
 
 //mongoose
 mongoose.connect(process.env.MONGO_URI)
