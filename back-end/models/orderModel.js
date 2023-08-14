@@ -8,6 +8,10 @@ const orderSchema = new Schema({
     ref: 'User',
     required: true
   },
+  order_address:{
+    type: String,
+    required: true
+  },
   order_date:{
     type: Date,
     required: true
