@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   CardMedia,
   Card,
@@ -8,9 +8,25 @@ import {
   CardActions,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
-import { DrinkArray } from "../itemArr/OtherArray";
+import axios from "axios";
 
 function DrinkMenu(props) {
+  const [DrinkArray, setDrinkArray] = React.useState([]);
+
+  useEffect(() => {
+    async function fetchDrink() {
+      await axios
+        .get("http://localhost:4000/api/drink")
+        .then((response) => {
+          setDrinkArray(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    fetchDrink();
+  }, []);
+
   function handleClick(item) {
     const select_drink = {
       name: item.drink_name,
@@ -28,7 +44,7 @@ function DrinkMenu(props) {
         {DrinkArray.map((item) => {
           return (
             <Grid
-              key={item.drink_id}
+              key={item._id}
               item
               xs={12}
               sm={6}
@@ -42,13 +58,13 @@ function DrinkMenu(props) {
                 <CardMedia
                   component="img"
                   sx={{ maxHeight: "150px" }}
-                  image={item.image}
+                  image={require(`../image/${item.image}`)}
                   alt="drink"
                 />
                 <CardContent sx={{ pb: 0 }}>
                   <div className="descriptionWrapper">
                     <h2>{item.drink_name}</h2>
-                    <div>{item.drink_desciption}</div>
+                    <div>{item.drink_description}</div>
                   </div>
 
                   <div className="priceTag">

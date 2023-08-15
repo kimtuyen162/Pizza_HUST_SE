@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   CardMedia,
   Card,
@@ -8,9 +8,24 @@ import {
   CardActions,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
-import { StarterArray } from "../itemArr/OtherArray";
+import axios from "axios";
 
 function StarterMenu(props) {
+  const [StarterArray, setStarterArray] = React.useState([]);
+
+  useEffect(() => {
+    async function fetchStarter() {
+      await axios
+        .get("http://localhost:4000/api/starter")
+        .then((response) => {
+          setStarterArray(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    fetchStarter();
+  }, []);
   function handleClick(item) {
     const select_starter = {
       name: item.starter_name,
@@ -28,7 +43,7 @@ function StarterMenu(props) {
         {StarterArray.map((item) => {
           return (
             <Grid
-              key={item.starter_id}
+              key={item._id}
               item
               xs={12}
               sm={6}
@@ -42,13 +57,13 @@ function StarterMenu(props) {
                 <CardMedia
                   component="img"
                   sx={{ maxHeight: "150px" }}
-                  image={item.image}
+                  image={require(`../image/${item.image}`)}
                   alt="starter"
                 />
                 <CardContent sx={{ pb: 0 }}>
                   <div className="descriptionWrapper">
                     <h2>{item.starter_name}</h2>
-                    <div>{item.starter_desciption}</div>
+                    <div>{item.starter_description}</div>
                   </div>
 
                   <div className="priceTag">

@@ -7,17 +7,17 @@ function CartCollapse(props) {
       <div>
         {props.item.order_combo.pizzas.map((it, index) => {
           return (
-            <div key={index}>
+            <div key={it._id}>
               <div className="cartCombo">
                 <Icon icon="bx:right-arrow" style={{ marginTop: "10px" }} />
                 <div>x{it.quantity}</div>
-                <div>{it.pizza.pizza_name}</div>
+                <div>{it.pizza}</div>
               </div>
               <div className="comboPizzaAddOn">
                 <Icon icon="mdi:dot" style={{ margin: "5px" }} />
-                <div>{it.crust.crust_name}</div>
+                <div>{it.crust}</div>
                 <Icon icon="mdi:dot" style={{ margin: "5px" }} />
-                <div>{it.size.size_name}</div>
+                <div>{it.size}</div>
               </div>
             </div>
           );
@@ -31,7 +31,7 @@ function CartCollapse(props) {
             </div>
           );
         })}
-        {props.item.order_combo.drinks.map((it, index) => {
+        {/* {props.item.order_combo.drinks.map((it, index) => {
           return (
             <div className="cartCombo" key={index}>
               <Icon icon="bx:right-arrow" style={{ marginTop: "10px" }} />
@@ -39,7 +39,7 @@ function CartCollapse(props) {
               <div>{it.drink.drink_name}</div>
             </div>
           );
-        })}
+        })} */}
       </div>
     );
   }
