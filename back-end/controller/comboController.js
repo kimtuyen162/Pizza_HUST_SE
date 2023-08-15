@@ -30,7 +30,7 @@ const getCombo = async (req, res) => {
 
 //create new combo
 const createCombo = async (req, res) => {
-  const {
+const {
     combo_name,
     combo_price,
     image,
@@ -54,41 +54,9 @@ const createCombo = async (req, res) => {
     orderedPizzas.push(ordPizza);
   }
 
-  const orderedDrinks = [];
-
-  for (const orderedDrink of drinks) {
-    const { drink, quantity } = orderedDrink;
-
-    const ordDrink = {
-      drink: await Drink.findById(drink).exec(),
-      quantity: quantity,
-    };
-    orderedDrinks.push(ordDrink);
-  }
-
-  const orderedStarters = [];
-
-  for (const orderedStarter of starters) {
-    const { starter, quantity } = orderedStarter;
-
-    const ordStarter = {
-      starter: await Starter.findById(starter).exec(),
-      quantity: quantity,
-    };
-    orderedStarters.push(ordStarter);
-  }
-
-  try {
-    const newCombo = await Combo.create({
-      combo_name,
-      combo_price,
-      image,
-      combo_description,
-      pizzas: orderedPizzas,
-      starters: orderedStarters,
-      drinks:orderedDrinks
-    });
-    res.status(200).json(newCombo);
+  try{
+    const newCombo = await Combo.create({combo_name, combo_price, image, combo_description, starters, drinks, pizzas: orderedPizzas})
+    res.status(200).json(newCombo)
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
