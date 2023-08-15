@@ -30,7 +30,7 @@ const getCombo = async (req, res) => {
 
 //create new combo
 const createCombo = async (req, res) => {
-  const {combo_name, combo_price, image, combo_description, starters, pizzas} = req.body
+  const {combo_name, combo_price, image, combo_description, starters, drinks, pizzas} = req.body
 
   const orderedPizzas = [];
 
@@ -47,7 +47,7 @@ const createCombo = async (req, res) => {
   }
 
   try{
-    const newCombo = await Combo.create({combo_name, combo_price, image, combo_description, pizzas: orderedPizzas})
+    const newCombo = await Combo.create({combo_name, combo_price, image, combo_description, starters, drinks, pizzas: orderedPizzas})
     res.status(200).json(newCombo)
   }
   catch(error){
