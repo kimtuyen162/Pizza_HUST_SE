@@ -106,7 +106,6 @@ function PizzaMenu(props) {
       return pizza.pizza_id === item.pizza_id;
     });
     const selCrust = CrustArray.find((item) => {
-      console.log(item);
       return item.crust_name === crust;
     });
     const selSize = SizeArray.find((item) => {
@@ -122,7 +121,6 @@ function PizzaMenu(props) {
       price: selPizza.pizza_price + selCrust.crust_price + selSize.size_price,
       quantity: 1,
     };
-    console.log(select_pizza);
     props.addPizza(select_pizza);
   }
 
