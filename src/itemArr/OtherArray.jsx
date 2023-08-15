@@ -1,47 +1,54 @@
 
-export const DrinkArray=[
-    {
-        drink_id:0,
-        drink_name:"Drink",
-        drink_desciption:"Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Erat morbi viverra bibendum in sit. Ac semper arcu facilisis ornare",
-        drink_price:15000,
-        image:require('../image/drink.jpg')
-    },
-    {
-        drink_id:1,
-        drink_name:"Drink",
-        drink_desciption:"Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Erat morbi viverra bibendum in sit. Ac semper arcu facilisis ornare",
-        drink_price:15000,
-        image:require('../image/drink1.jpg')    },
-    {
-        drink_id:2,
-        drink_name:"Drink",
-        drink_desciption:"Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Erat morbi viverra bibendum in sit. Ac semper arcu facilisis ornare",
-        drink_price:15000,
-        image:require('../image/drink.jpg')
-    },
-    {
-        drink_id:3,
-        drink_name:"Drink",
-        drink_desciption:"Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Erat morbi viverra bibendum in sit. Ac semper arcu facilisis ornare",
-        drink_price:15000,
-        image:require('../image/drink2.jpg')
-    },
-    {
-        drink_id:4,
-        drink_name:"Drink",
-        drink_desciption:"Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Erat morbi viverra bibendum in sit. Ac semper arcu facilisis ornare",
-        drink_price:15000,
-        image:require('../image/drink3.jpg')
-    },
-    {
-        drink_id:5,
-        drink_name:"Drink",
-        drink_desciption:"Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Erat morbi viverra bibendum in sit. Ac semper arcu facilisis ornare",
-        drink_price:15000,
-        image:require('../image/drink4.jpg')
-    },
-]
+export const DrinkArray = [
+  {
+    drink_id: 0,
+    drink_name: "Drink",
+    drink_desciption:
+      "Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Erat morbi viverra bibendum in sit. Ac semper arcu facilisis ornare",
+    drink_price: 15000,
+    image: require("../image/drink.jpg"),
+  },
+  {
+    drink_id: 0,
+    drink_name: "Drink",
+    drink_desciption:
+      "Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Erat morbi viverra bibendum in sit. Ac semper arcu facilisis ornare",
+    drink_price: 15000,
+    image: require("../image/drink1.jpg"),
+  },
+  {
+    drink_id: 2,
+    drink_name: "Drink",
+    drink_desciption:
+      "Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Erat morbi viverra bibendum in sit. Ac semper arcu facilisis ornare",
+    drink_price: 15000,
+    image: require("../image/drink.jpg"),
+  },
+  {
+    drink_id: 3,
+    drink_name: "Drink",
+    drink_desciption:
+      "Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Erat morbi viverra bibendum in sit. Ac semper arcu facilisis ornare",
+    drink_price: 15000,
+    image: require("../image/drink2.jpg"),
+  },
+  {
+    drink_id: 4,
+    drink_name: "Drink",
+    drink_desciption:
+      "Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Erat morbi viverra bibendum in sit. Ac semper arcu facilisis ornare",
+    drink_price: 15000,
+    image: require("../image/drink3.jpg"),
+  },
+  {
+    drink_id: 5,
+    drink_name: "Drink",
+    drink_desciption:
+      "Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Erat morbi viverra bibendum in sit. Ac semper arcu facilisis ornare",
+    drink_price: 15000,
+    image: require("../image/drink4.jpg"),
+  },
+];
 
 
 export const StarterArray=[

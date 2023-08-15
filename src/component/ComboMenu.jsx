@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   CardMedia,
   Card,
@@ -7,10 +7,26 @@ import {
   Button,
   CardActions,
 } from "@mui/material";
-import { ComboArray } from "../itemArr/ComboArray";
 import { Icon } from "@iconify/react";
+import axios from "axios";
 
 function ComboMenu(props) {
+  const [ComboArray, setComboArray] = React.useState([]);
+
+  useEffect(() => {
+    async function fetchCombo() {
+      await axios
+        .get("http://localhost:4000/api/combo")
+        .then((response) => {
+          setComboArray(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    fetchCombo();
+  }, []);
+
   function handleClick(item) {
     const select_combo = {
       name: item.combo_name,
@@ -28,7 +44,7 @@ function ComboMenu(props) {
         {ComboArray.map((item) => {
           return (
             <Grid
-              key={item.combo_id}
+              key={item._id}
               item
               xs={12}
               sm={6}
@@ -42,13 +58,13 @@ function ComboMenu(props) {
                 <CardMedia
                   component="img"
                   sx={{ maxHeight: "150px" }}
-                  image={item.image}
+                  image={require(`../image/${item.image}`)}
                   alt="pizza1"
                 />
                 <CardContent sx={{ pb: 0 }}>
                   <div className="descriptionWrapper">
                     <h2>{item.combo_name}</h2>
-                    <div>{item.combo_desciption}</div>
+                    <div>{item.combo_description}</div>
                   </div>
 
                   <div className="priceTag">

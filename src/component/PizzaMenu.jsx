@@ -13,12 +13,59 @@ import {
   FormControl,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
-import { PizzaArray } from "../itemArr/PizzaArray";
-import { CrustArray, SizeArray } from "../itemArr/AddOnArray";
-import React, { useState } from "react";
+// import { PizzaArray } from "../itemArr/PizzaArray";
+// import { CrustArray, SizeArray } from "../itemArr/AddOnArray";
+import React, { useEffect, useState } from "react";
 import "../style/layout.css";
+import axios from "axios";
 
 function PizzaMenu(props) {
+  const [PizzaArray, setPizzaArray] = React.useState([]);
+  const [CrustArray, setCrustArray] = React.useState([]);
+  const [SizeArray, setSizeArray] = React.useState([]);
+
+  useEffect(() => {
+    async function fetchPizza() {
+      await axios
+        .get("http://localhost:4000/api/pizza")
+        .then((response) => {
+          setPizzaArray(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    fetchPizza();
+  }, []);
+
+  useEffect(() => {
+    async function fetchSize() {
+      await axios
+        .get("http://localhost:4000/api/size")
+        .then((response) => {
+          setSizeArray(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    fetchSize();
+  }, []);
+
+  useEffect(() => {
+    async function fetchCrust() {
+      await axios
+        .get("http://localhost:4000/api/crust")
+        .then((response) => {
+          setCrustArray(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    fetchCrust();
+  }, []);
+
   const modalStyle = {
     position: "relative",
     top: "50%",
@@ -36,13 +83,13 @@ function PizzaMenu(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = (event, item) => {
     setIt(item);
-    setCrust(0);
-    setSize(0);
+    setCrust(CrustArray[0].crust_name);
+    setSize(SizeArray[1].size_name);
     setOpen(true);
   };
   function handleClose() {
-    setCrust(0);
-    setSize(0);
+    setCrust(CrustArray[0].crust_name);
+    setSize(SizeArray[1].size_name);
     setOpen(false);
   }
 
@@ -56,13 +103,14 @@ function PizzaMenu(props) {
 
   function handleClick(item) {
     const selPizza = PizzaArray.find((pizza) => {
-      return pizza.pizza_id === parseInt(item.pizza_id);
+      return pizza.pizza_id === item.pizza_id;
     });
-    const selCrust = CrustArray.find(
-      (item) => item.crust_id === parseInt(crust)
-    );
+    const selCrust = CrustArray.find((item) => {
+      console.log(item);
+      return item.crust_name === crust;
+    });
     const selSize = SizeArray.find((item) => {
-      return item.size_id === parseInt(size);
+      return item.size_name === size;
     });
 
     const select_pizza = {
@@ -74,6 +122,7 @@ function PizzaMenu(props) {
       price: selPizza.pizza_price + selCrust.crust_price + selSize.size_price,
       quantity: 1,
     };
+    console.log(select_pizza);
     props.addPizza(select_pizza);
   }
 
@@ -83,7 +132,7 @@ function PizzaMenu(props) {
         {PizzaArray.map((item) => {
           return (
             <Grid
-              key={item.pizza_id}
+              key={item._id}
               item
               xs={12}
               sm={6}
@@ -97,7 +146,7 @@ function PizzaMenu(props) {
                 <CardMedia
                   component="img"
                   sx={{ maxHeight: "150px" }}
-                  image={item.image}
+                  image={require(`../image/${item.image}`)}
                   alt="pizza1"
                 />
                 <CardContent sx={{ pb: 0 }}>
@@ -151,7 +200,10 @@ function PizzaMenu(props) {
       >
         <Box sx={modalStyle}>
           <div className="modalWrapper">
-            <img src={it.image} alt="pizza" />
+            <img
+              src={it.image ? require(`../image/${it.image}`) : ""}
+              alt="pizza"
+            />
             <div className="modalContentWrapper">
               <Typography
                 id="modal-modal-title"
@@ -188,7 +240,7 @@ function PizzaMenu(props) {
                     >
                       {SizeArray.map((item) => {
                         return (
-                          <option key={item.size_id} value={item.size_id}>
+                          <option key={item._id} value={item.size_id}>
                             {item.size_name}
                           </option>
                         );
@@ -218,7 +270,7 @@ function PizzaMenu(props) {
                     >
                       {CrustArray.map((item) => {
                         return (
-                          <option key={item.crust_id} value={item.crust_id}>
+                          <option key={item._id} value={item.crust_id}>
                             {item.crust_name}
                           </option>
                         );

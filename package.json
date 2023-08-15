@@ -10,6 +10,9 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.4.0",
+    "body-parser": "^1.20.2",
+    "mongoose": "^7.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.12.0",
@@ -18,10 +21,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set PORT=3000&react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "nodemon back-end/server.js"
   },
   "eslintConfig": {
     "extends": [
@@ -44,5 +48,5 @@
   "devDependencies": {
     "@iconify/react": "^4.1.0"
   },
-  "homepage":"http://localhost:3000/menu/Combo"
+  "homepage": "http://localhost:3000/menu/Combo"
 }
