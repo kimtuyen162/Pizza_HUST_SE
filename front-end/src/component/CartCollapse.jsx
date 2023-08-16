@@ -69,12 +69,7 @@ function CartCollapse(props) {
         fetchDrinkInfo(item);
       });
     }
-  }, [
-    props.item.order_combo.drinks,
-    props.item.order_combo.starters,
-    props.item.order_combo.pizzas,
-    props.item.type,
-  ]);
+  }, [props.item]);
   function renderCombo() {
     return (
       <div>
