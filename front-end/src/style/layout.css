@@ -107,7 +107,6 @@
 
 .modalContentWrapper{
     height: 100%;
-    position:absolute;
     width: 80%;
     right:0;
     z-index: 100;
