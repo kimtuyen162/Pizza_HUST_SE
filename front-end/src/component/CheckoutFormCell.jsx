@@ -15,7 +15,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 
-function CheckoutFormCell() {
+function CheckoutFormCell(props) {
   const today = new Date();
   today.setMinutes(today.getMinutes() + 20);
   const time =
@@ -53,6 +53,7 @@ function CheckoutFormCell() {
     )
       setEmptyField(true);
     else {
+      props.clearCart();
       navigate("/menu/Combo");
     }
   }

@@ -103,6 +103,11 @@ function MenuPage() {
     setNoti(false);
   };
 
+  function clearCart() {
+    setTotal(0);
+    setCart([]);
+  }
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -126,7 +131,13 @@ function MenuPage() {
           </Route>
           <Route
             path="/checkout"
-            element={<CheckoutPage totalBill={total} myCart={cart} />}
+            element={
+              <CheckoutPage
+                totalBill={total}
+                myCart={cart}
+                clearCart={clearCart}
+              />
+            }
           />
         </Routes>
       </BrowserRouter>

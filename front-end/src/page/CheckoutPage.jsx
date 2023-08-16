@@ -7,7 +7,7 @@ function CheckoutPage(props) {
   return (
     <div className="pageContainer">
       <CheckoutCartCell totalBill={props.totalBill} myCart={props.myCart} />
-      <CheckoutFormCell />
+      <CheckoutFormCell clearCart={props.clearCart} />
     </div>
   );
 }
