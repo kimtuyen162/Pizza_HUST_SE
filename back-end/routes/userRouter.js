@@ -10,19 +10,19 @@ const {
 } = require('../controller/userController')
 
 router
-  .route('/login')
+  .route('/user/login')
   .post(login)
 router
-  .route('/logout')
+  .route('/user/logout')  
   .post(logout)
 router
-  .route('/register')
+  .route('/user/register')
   .post(register)
 router
-  .route('/:id')
-  .get(user)
-router
-  .route('/profile')
+  .route('/user/profile')
   .get(profile)
+router
+  .route('/user/:id')
+  .get(user)
 
 module.exports = router
