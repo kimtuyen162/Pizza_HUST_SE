@@ -53,6 +53,14 @@ function CheckoutFormCell(props) {
     )
       setEmptyField(true);
     else {
+      const userInfo = {
+        address: address,
+        phoneNumber: phoneNumber,
+        email: email,
+        fullname: fullname,
+        date: today,
+      };
+      props.postOrder(userInfo);
       props.clearCart();
       navigate("/menu/Combo");
     }
