@@ -2,27 +2,26 @@ const mongoose = require("mongoose")
 
 const Schema = mongoose.Schema
 
-const comboSchema = new Schema({
-  combo_name:{
+const orderSchema = new Schema({
+  user_id:{
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  order_address:{
     type: String,
     required: true
   },
-  combo_price:{
+  order_date:{
+    type: Date,
+    required: true
+  },
+  total_price:{
     type: Number,
     required: true
   },
-  image:{
-    type: String,
-  },
-  combo_description:{
-    type: String,
-  },
   starters:[{
     starter: { type: Schema.Types.ObjectId, ref: 'Starter' },
-    quantity: { type: Number, require: true }
-  }],
-  drinks:[{
-    drink: { type: Schema.Types.ObjectId, ref: 'Drink' },
     quantity: { type: Number, require: true }
   }],
   pizzas:[{
@@ -30,7 +29,11 @@ const comboSchema = new Schema({
     crust: { type: Schema.Types.ObjectId, ref: 'Crust' },
     pizza: { type: Schema.Types.ObjectId, ref: 'Pizza' },
     quantity:{ type: Number, required: true }
-  }]
+  }],
+  combos:[{
+    combo: { type: Schema.Types.ObjectId, ref: 'Combo' },
+    quantity:{ type: Number, required: true }
+  }],
 }, { timestamps: true})
 
-module.exports = mongoose.model("Combo", comboSchema)
+module.exports = mongoose.model("Order", orderSchema)
