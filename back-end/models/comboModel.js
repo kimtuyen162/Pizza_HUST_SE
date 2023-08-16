@@ -21,6 +21,10 @@ const comboSchema = new Schema({
     starter: { type: Schema.Types.ObjectId, ref: 'Starter' },
     quantity: { type: Number, require: true }
   }],
+  drinks:[{
+    drink: { type: Schema.Types.ObjectId, ref: 'Drink' },
+    quantity: { type: Number, require: true }
+  }],
   pizzas:[{
     size: { type: Schema.Types.ObjectId, ref: 'Size' },
     crust: { type: Schema.Types.ObjectId, ref: 'Crust' },
