@@ -10,6 +10,7 @@ const comboRoutes = require("./routes/comboRouter");
 const drinkRoutes = require("./routes/drinkRouter");
 const starterRoutes = require("./routes/starterRouter");
 const userRoutes = require("./routes/userRouter");
+const orderRoutes = require("./routes/orderRoute");
 
 //express app
 const app = express();
@@ -33,6 +34,7 @@ app.use("/api", comboRoutes);
 app.use("/api", drinkRoutes);
 app.use("/api", starterRoutes);
 app.use("/api", userRoutes);
+app.use("/api", orderRoutes);
 
 //mongoose
 mongoose

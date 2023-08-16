@@ -1,16 +1,37 @@
-const Order = require('../models/orderModel');
-const Combo = require('../models/comboModel')
-const Size = require('../models/sizeModel')
-const Crust = require('../models/crustModel')
-const Pizza = require('../models/pizzaModel')
-const mongoose = require('mongoose');
+const Order = require("../models/orderModel");
+const Combo = require("../models/comboModel");
+const Size = require("../models/sizeModel");
+const Crust = require("../models/crustModel");
+const Pizza = require("../models/pizzaModel");
+const mongoose = require("mongoose");
 
 // Create a new order
 const createOrder = async (req, res) => {
-    const { order_id, user_id, total_price } = req.body;
-    const newOrder = await Order.create({ order_id, user_id, total_price });
-    res.status(201).json(newOrder);
-  }
+  const {
+    order_id,
+    user_id,
+    order_date,
+    order_address,
+    total_price,
+    combos,
+    starters,
+    drinks,
+    pizzas,
+  } = req.body;
+  const newOrder = await Order.create({
+    order_id,
+    order_address,
+    order_date,
+    user_id,
+    total_price,
+    combos,
+    drinks,
+    starters,
+    pizzas,
+    drinks,
+  });
+  res.status(201).json(newOrder);
+};
 
 // Retrieve all orders
 const getAllOrders = async (req, res) => {
@@ -20,7 +41,7 @@ const getAllOrders = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: "Can not find any orders" });
   }
-}
+};
 
 // Retrieve a single order by ID
 const getOrder = async (req, res) => {
@@ -39,7 +60,7 @@ const getOrder = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: "ERROR!" });
   }
-}
+};
 
 // Update an order by ID
 const updateOrder = async (req, res) => {
@@ -50,7 +71,9 @@ const updateOrder = async (req, res) => {
   }
 
   try {
-    const updatedOrder = await Order.findByIdAndUpdate(id, req.body, { new: true });
+    const updatedOrder = await Order.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
     if (!updatedOrder) {
       return res.status(404).json({ error: "No such order" });
     }
@@ -58,7 +81,7 @@ const updateOrder = async (req, res) => {
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
-}
+};
 
 // Delete an order by ID
 const deleteOrder = async (req, res) => {
@@ -77,12 +100,12 @@ const deleteOrder = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-}
+};
 
 module.exports = {
   createOrder,
   getAllOrders,
   getOrder,
   updateOrder,
-  deleteOrder
+  deleteOrder,
 };

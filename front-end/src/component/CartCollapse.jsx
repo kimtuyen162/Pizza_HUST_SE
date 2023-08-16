@@ -1,101 +1,80 @@
 import { Icon } from "@iconify/react";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function CartCollapse(props) {
-  console.log(props.item);
   const [drinks, setDrink] = useState([]);
   const [starters, setStarter] = useState([]);
   const [pizzas, setPizza] = useState([]);
   const [sizes, setSize] = useState([]);
   const [crusts, setCrust] = useState([]);
 
-  if (props.item.type === "combo") {
-    async function fetchPizzaInfo(item) {
-      await axios
-        .get(`http://localhost:4000/api/pizza/${item.pizza}`)
-        .then((response) => {
-          setPizza((current) => [...current, response.data.pizza_name]);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      await axios
-        .get(`http://localhost:4000/api/size/${item.size}`)
-        .then((response) => {
-          setSize((current) => [...current, response.data.size_name]);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      await axios
-        .get(`http://localhost:4000/api/crust/${item.crust}`)
-        .then((response) => {
-          setCrust((current) => [...current, response.data.crust_name]);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-    for (const item of props.item.order_combo.pizzas) {
-      fetchPizzaInfo(item);
-    }
-
-    async function fetchDrinkInfo(item) {
-      await axios
-        .get(`http://localhost:4000/api/drink/${item.drink}`)
-        .then((response) => {
-          setDrink((current) => [...current, response.data.drink_name]);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-    for (const item of props.item.order_combo.drinks) {
-      fetchDrinkInfo(item);
-    }
-    async function fetchStarterInfo(item) {
-      await axios
-        .get(`http://localhost:4000/api/starter/${item.starter}`)
-        .then((response) => {
-          setStarter((current) => [...current, response.data.starter_name]);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-    for (const item of props.item.order_combo.starters) {
-      fetchStarterInfo(item);
-    }
-  } else {
-    // async function fetchPizzaInfo(item) {
-    //   await axios
-    //     .get(`http://localhost:4000/api/pizza/${item.order_pizza}`)
-    //     .then((response) => {
-    //       setPizza((current) => [...current, response.data.pizza_name]);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-    //   await axios
-    //     .get(`http://localhost:4000/api/size/${item.order_size}`)
-    //     .then((response) => {
-    //       setSize((current) => [...current, response.data.size_name]);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-    //   await axios
-    //     .get(`http://localhost:4000/api/crust/${item.order_crust}`)
-    //     .then((response) => {
-    //       setCrust((current) => [...current, response.data.crust_name]);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-    // }
-    // fetchPizzaInfo(props.item);
+  async function fetchPizzaInfo(item) {
+    await axios
+      .get(`http://localhost:4000/api/pizza/${item.pizza}`)
+      .then((response) => {
+        setPizza((current) => [...current, response.data.pizza_name]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    await axios
+      .get(`http://localhost:4000/api/size/${item.size}`)
+      .then((response) => {
+        setSize((current) => [...current, response.data.size_name]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    await axios
+      .get(`http://localhost:4000/api/crust/${item.crust}`)
+      .then((response) => {
+        setCrust((current) => [...current, response.data.crust_name]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
+
+  async function fetchDrinkInfo(item) {
+    await axios
+      .get(`http://localhost:4000/api/drink/${item.drink}`)
+      .then((response) => {
+        setDrink((current) => [...current, response.data.drink_name]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  async function fetchStarterInfo(item) {
+    await axios
+      .get(`http://localhost:4000/api/starter/${item.starter}`)
+      .then((response) => {
+        setStarter((current) => [...current, response.data.starter_name]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  useEffect(() => {
+    if (props.item.type === "combo") {
+      props.item.order_combo.pizzas.forEach((item) => {
+        fetchPizzaInfo(item);
+      });
+      props.item.order_combo.starters.forEach((item) => {
+        fetchStarterInfo(item);
+      });
+      props.item.order_combo.drinks.forEach((item) => {
+        fetchDrinkInfo(item);
+      });
+    }
+  }, [
+    props.item.order_combo.drinks,
+    props.item.order_combo.starters,
+    props.item.order_combo.pizzas,
+    props.item.type,
+  ]);
   function renderCombo() {
     return (
       <div>
