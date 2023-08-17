@@ -71,7 +71,7 @@ function CheckoutFormCell(props) {
       };
       props.postOrder(userInfo);
       props.clearCart();
-      navigate("/menu/Combo");
+      navigate("/home");
     }
   }
 
