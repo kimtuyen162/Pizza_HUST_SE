@@ -49,7 +49,7 @@ function CheckoutPage(props) {
           break;
       }
     });
-    const user_id = props.logIn ? "64ddae6a2a08054fcb893773" : props.user._id;
+    const user_id = props.logIn ? props.user._id : "64ddae6a2a08054fcb893773";
 
     const payload = {
       user_id: user_id,
