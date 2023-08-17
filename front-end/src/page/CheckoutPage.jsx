@@ -77,8 +77,10 @@ function CheckoutPage(props) {
       <CheckoutCartCell totalBill={props.totalBill} myCart={props.myCart} />
       <CheckoutFormCell
         clearCart={props.clearCart}
-        logIn={props.logIn}
-        user={props.user}
+        email={props.email}
+        address={props.address}
+        phone={props.phone}
+        fullname={props.fullname}
         postOrder={postOrder}
       />
     </div>

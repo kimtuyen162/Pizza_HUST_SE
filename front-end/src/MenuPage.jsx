@@ -177,8 +177,10 @@ function MenuPage() {
                 totalBill={total}
                 myCart={cart}
                 clearCart={clearCart}
-                logIn={logged}
-                user={user}
+                email={logged ? user.email : ""}
+                address={logged ? user.address : ""}
+                phone={logged ? user.phone : ""}
+                fullname={logged ? user.fullname : ""}
               />
             }
           />
