@@ -1,58 +1,45 @@
-import React from 'react'
-import "./Navbar.css";
-import {Link, Switch, Route, BrowserRouter as Router} from 'react-router-dom';
-import Signin from "../Signin/Signin"
-import Signup from "../Signup/Signup"
-import Homepage from "../../page/Homepage/Homepage"
+import React from "react";
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
-    <Router>
-        <div>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/Homepage">Home</Link>
-                    </li>
+    <div>
+      <nav>
+        <ul>
+          <li className="navBar">
+            <a className="navItem" href="/home">
+              <h1>Home</h1>
+            </a>
+            <a className="navItem" href="/menu/Combo">
+              <h1>Menu</h1>
+            </a>
+            <h1 className="navTitle">PIZZA HUST</h1>
+            <a
+              className="navItem"
+              href="/home/SignIn"
+              style={{ display: props.logIn ? "none" : "" }}
+            >
+              <h1>Sign in</h1>
+            </a>
+            <a
+              className="navItem"
+              href="/home/SignUp"
+              style={{ display: props.logIn ? "none" : "" }}
+            >
+              <h1>Sign Up</h1>
+            </a>
+            <h1
+              className="loggedItem"
+              style={{
+                display: props.logIn ? "" : "none",
+              }}
+            >
+              User Logged In
+            </h1>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  );
+};
 
-                    <li>   
-                        <Link to="/Menu">Menu</Link>
-                    </li>
-
-                    <div class="logo">PIZZA HUST</div>
-
-                    <li>
-                        <Link to="/Signin">Sign in</Link>
-                    </li>
-
-                    <li>
-                        <Link to="/Signup">Sign up</Link>
-                    </li>
-                </ul>
-            </nav>
-
-            {/* <Switch>
-                <Route path="/Homepage">
-                    <Homepage/>
-                </Route>
-
-                <Route path="/Menu">
-                    { <Menu/> }
-                </Route>
-
-                <Route path="/Signin">
-                    <Signin/>
-                </Route>
-
-                <Route path="/Signup">
-                    <Signup/>
-                </Route>
-
-            </Switch> */}
-
-        </div>
-    </Router>
-  )
-}
-
-export default Navbar
+export default Navbar;

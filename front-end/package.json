@@ -48,5 +48,5 @@
   "devDependencies": {
     "@iconify/react": "^4.1.0"
   },
-  "homepage": "http://localhost:3000/menu/Combo"
+  "homepage": "http://localhost:3000/home"
 }
