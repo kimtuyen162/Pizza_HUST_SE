@@ -1,0 +1,33 @@
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: 1200px;
+    top: 40px;
+    position: relative;
+    z-index: 10;
+}
+
+nav .logo{
+    color: var(--chocolate, #550312);
+    font-family: "Lacquer", sans-serif;
+    font-size: 29.4px;
+    font-weight: 400;  
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 160px;
+    list-style: none;
+    margin: 0;
+}
+
+nav ul li a{
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+    color: var(--chocolate, #550312);
+    font-size: 20px;
+    font-weight: 400;
+}
