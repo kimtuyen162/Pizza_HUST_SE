@@ -1,10 +1,11 @@
-import { Button, TextField } from "@mui/material";
+import { Alert, Button, Snackbar, TextField } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 
 const Signup = () => {
   const navigate = useNavigate();
+  const [wrongInfo, setWrongInfo] = useState(false);
   const [emptyField, setEmptyField] = useState(false);
   const [fullname, setFullname] = useState("");
   const [phone, setPhoneNumber] = useState("");
@@ -12,6 +13,13 @@ const Signup = () => {
   const [address, setAddress] = useState("");
   const [password, setPassword] = useState("");
 
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setWrongInfo(false);
+  };
   function handleClick() {
     if ((address === "") | (phone === "") | (email === "") | (fullname === ""))
       setEmptyField(true);
@@ -28,11 +36,12 @@ const Signup = () => {
         .post("http://localhost:4000/api/user/register", payload)
         .then((response) => {
           console.log(response.data);
+          navigate("/home/SignIn");
         })
         .catch((error) => {
+          setWrongInfo(true);
           console.log(error);
         });
-      navigate("/home/SignIn");
     }
   }
 
@@ -123,6 +132,16 @@ const Signup = () => {
           Sign Up
         </Button>
       </div>
+      <Snackbar
+        open={wrongInfo}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        autoHideDuration={2000}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+          This email has already been registered!
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

@@ -13,6 +13,7 @@ import HomeArea from "./component/HomeArea/HomeArea";
 import Signin from "./component/Signin/Signin";
 import Signup from "./component/Signup/Signup";
 import axios from "axios";
+import LogOut from "./component/LogOut";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -127,6 +128,32 @@ function MenuPage() {
     );
   }
 
+  function handleLogOut() {
+    axios
+      .post("http://localhost:4000/api/user/logout", {})
+      .then((response) => {
+        console.log(response.data);
+        setLogged(false);
+        const payload = {
+          email: "default",
+          password: "default",
+        };
+
+        axios
+          .post("http://localhost:4000/api/user/login", payload)
+          .then((response) => {
+            console.log(response.data);
+            setUse(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   const handleCloseNoti = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -177,6 +204,8 @@ function MenuPage() {
                 totalBill={total}
                 myCart={cart}
                 clearCart={clearCart}
+                user={user}
+                logIn={logged}
                 email={logged ? user.email : ""}
                 address={logged ? user.address : ""}
                 phone={logged ? user.phone : ""}
@@ -185,9 +214,16 @@ function MenuPage() {
             }
           />
           <Route path="/home" element={<Homepage logIn={logged} />}>
-            <Route path="/home" element={<HomeArea />} />
+            <Route
+              path="/home"
+              element={<HomeArea logIn={logged} user={user} />}
+            />
             <Route path="/home/SignIn" element={<Signin setUser={setUser} />} />
             <Route path="/home/SignUp" element={<Signup />} />
+            <Route
+              path="/home/LogOut"
+              element={<LogOut handleLogOut={handleLogOut} />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>

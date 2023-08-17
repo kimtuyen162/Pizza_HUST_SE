@@ -3,21 +3,25 @@ import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
-const HomeArea = () => {
+const HomeArea = (props) => {
   return (
     <div>
       <div className="homeContent">
         <div className="contentText">
-          <h1>Pizzalicious</h1>
+          <h1>
+            {props.logIn
+              ? "Welcome back, " + props.user.fullname
+              : "Pizzalicious"}
+          </h1>
           <h2>Enjoy your days</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum
-            odio aliquet sapien neque, porttitor tellus pellentesque interdum
-            sit. Vitae cras porta viverra ut pulvinar lorem. Aliquet faucibus
-            semper pretium vitae morbi elit fermentum. Egestas tempus nec arcu,
-            adipiscing fermentum maecenas nunc diam at. Justo, justo, turpis
-            suspendisse gravida a ultrices nunc ultrices nisi. Rutrum phasellus
-            vitae est.
+            At Pizza Hust, we are passionate about serving the most
+            mouthwatering pizzas in town. Prepare your taste buds for a
+            sensational experience that will keep you coming back for more.
+            Indulge in a wide selection of pizzas made from the finest
+            ingredients, including fresh dough, premium cheeses, and hand-picked
+            toppings. From classic favorites to artisanal creations, our menu
+            has something for everyone.
           </p>
         </div>
         <div className="orderBtnWrapper">

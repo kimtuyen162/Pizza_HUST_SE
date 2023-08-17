@@ -127,3 +127,10 @@ nav ul{
         font-family: poppins;
         color: #550312;
 }
+
+.logoutContainer{
+    font-family: poppins;
+        color: #550312;
+    margin-top: 100px;
+    text-align: center;
+}
