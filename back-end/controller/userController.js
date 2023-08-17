@@ -64,11 +64,12 @@ const user = (req, res) => {
 
 //register
 const register = async (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
+  const { fullname, address, phone, email, password } = req.body;
   try {
     const userDoc = await User.create({
-      firstName,
-      lastName,
+      fullname,
+      phone,
+      address,
       email,
       password: bcrypt.hashSync(password, bcryptSalt),
     });
