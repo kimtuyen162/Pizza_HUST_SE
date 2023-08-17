@@ -95,7 +95,9 @@ function CheckoutFormCell(props) {
           <TextField
             required
             onChange={(e) => setAddress(e.target.value)}
+            defaultValue={address}
             label="Your Address"
+            variant="filled"
             sx={{ width: "90%", m: 1 }}
             size="small"
             error={emptyField}
@@ -159,6 +161,8 @@ function CheckoutFormCell(props) {
             <TextField
               required
               label="Fullname"
+              defaultValue={fullname}
+              variant="filled"
               onChange={(e) => setFullname(e.target.value)}
               sx={{ width: "90%", m: 2, mt: 0 }}
               size="small"
@@ -170,6 +174,8 @@ function CheckoutFormCell(props) {
             <TextField
               required
               label="Phone number"
+              defaultValue={phoneNumber}
+              variant="filled"
               onChange={(e) => setPhoneNumber(e.target.value)}
               sx={{ width: "90%", m: 2 }}
               size="small"
@@ -180,6 +186,8 @@ function CheckoutFormCell(props) {
           <div className="inputWrapper">
             <TextField
               required
+              defaultValue={email}
+              variant="filled"
               onChange={(e) => setEmail(e.target.value)}
               label="Email"
               sx={{ width: "90%", m: 2 }}

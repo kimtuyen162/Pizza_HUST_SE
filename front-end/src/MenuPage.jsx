@@ -29,6 +29,8 @@ function MenuPage() {
 
   const [noti, setNoti] = useState(false);
 
+  const [notiComplete, setNotiComplete] = useState(false);
+
   useEffect(() => {
     const payload = {
       email: "default",
@@ -116,7 +118,6 @@ function MenuPage() {
     }
     setNoti(true);
   }
-
   function deleteItem(item) {
     setTotal(total - item.price * item.quantity);
     setCart((current) =>
@@ -134,9 +135,18 @@ function MenuPage() {
     setNoti(false);
   };
 
+  const handleCloseNotiComplete = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setNotiComplete(false);
+  };
+
   function clearCart() {
     setTotal(0);
     setCart([]);
+    setNotiComplete(true);
   }
 
   return (
@@ -191,6 +201,20 @@ function MenuPage() {
           sx={{ width: "100%" }}
         >
           Item added to your cart!
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={notiComplete}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        autoHideDuration={2000}
+        onClose={handleCloseNotiComplete}
+      >
+        <Alert
+          onClose={handleCloseNotiComplete}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          Your order has been placed!
         </Alert>
       </Snackbar>
     </div>
