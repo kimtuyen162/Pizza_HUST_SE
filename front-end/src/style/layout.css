@@ -12,7 +12,11 @@
     font-family: poppins;
     src: url(../../public/fonts/Poppins-Regular.ttf);
 }
+.homeLink{
+    text-decoration: none;
+}
 .menuTitle{
+    text-decoration: none;
     margin: 0;
     font-family: poppins;
     color:#550312

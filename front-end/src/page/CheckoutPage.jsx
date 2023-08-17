@@ -49,8 +49,10 @@ function CheckoutPage(props) {
           break;
       }
     });
+    const user_id = props.logIn ? "64ddae6a2a08054fcb893773" : props.user._id;
 
     const payload = {
+      user_id: user_id,
       order_address: user.address,
       order_date: user.date,
       total_price: props.totalBill,
@@ -73,7 +75,12 @@ function CheckoutPage(props) {
   return (
     <div className="pageContainer">
       <CheckoutCartCell totalBill={props.totalBill} myCart={props.myCart} />
-      <CheckoutFormCell clearCart={props.clearCart} postOrder={postOrder} />
+      <CheckoutFormCell
+        clearCart={props.clearCart}
+        logIn={props.logIn}
+        user={props.user}
+        postOrder={postOrder}
+      />
     </div>
   );
 }
