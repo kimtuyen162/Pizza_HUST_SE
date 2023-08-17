@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Alert, Button, Snackbar, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
@@ -7,8 +7,17 @@ import axios from "axios";
 const Signin = (props) => {
   const navigate = useNavigate();
   const [emptyField, setEmptyField] = useState(false);
+  const [wrongInfo, setWrongInfo] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setWrongInfo(false);
+  };
 
   function handleClick() {
     if ((email === "") | (password === "")) setEmptyField(true);
@@ -26,6 +35,7 @@ const Signin = (props) => {
           navigate("/home");
         })
         .catch((error) => {
+          setWrongInfo(true);
           console.log(error);
         });
     }
@@ -51,7 +61,9 @@ const Signin = (props) => {
           <TextField
             required
             label="Password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
             sx={{ width: "80%", m: 1 }}
             size="small"
             error={emptyField}
@@ -81,6 +93,16 @@ const Signin = (props) => {
           Sign In
         </Button>
       </div>
+      <Snackbar
+        open={wrongInfo}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        autoHideDuration={2000}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+          Your email or password was invalid!
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
