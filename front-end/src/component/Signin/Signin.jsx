@@ -1,7 +1,16 @@
-import { Alert, Button, Snackbar, TextField } from "@mui/material";
+import {
+  Alert,
+  Button,
+  IconButton,
+  InputAdornment,
+  Snackbar,
+  TextField,
+} from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import axios from "axios";
 
 const Signin = (props) => {
@@ -10,6 +19,9 @@ const Signin = (props) => {
   const [wrongInfo, setWrongInfo] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -61,6 +73,7 @@ const Signin = (props) => {
           <TextField
             required
             label="Password"
+            type={showPassword ? "text" : "password"}
             onChange={(e) => {
               setPassword(e.target.value);
             }}
@@ -68,6 +81,20 @@ const Signin = (props) => {
             size="small"
             error={emptyField}
             helperText={emptyField ? "Please fill this field" : ""}
+            InputProps={{
+              // <-- This is where the toggle button is added.
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
         </div>
         <p className="question">
