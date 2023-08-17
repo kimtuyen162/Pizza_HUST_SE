@@ -117,7 +117,7 @@ const Signin = (props) => {
           }}
           onClick={handleClick}
         >
-          Sign In
+          Log In
         </Button>
       </div>
       <Snackbar
