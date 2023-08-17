@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 
 function CheckoutFormCell(props) {
@@ -33,21 +33,21 @@ function CheckoutFormCell(props) {
 
   const [emptyField, setEmptyField] = useState(false);
   const [selectValue, setSelectValue] = useState(paymentArray[0].payment_name);
-  const [fullname, setFullname] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
+  const [fullname, setFullname] = useState(props.fullname);
+  const [phoneNumber, setPhoneNumber] = useState(props.phone);
+  const [email, setEmail] = useState(props.email);
+  const [address, setAddress] = useState(props.address);
   const [notes, setNotes] = useState("");
   const [delitime, setDelitime] = useState(time);
 
-  useEffect(() => {
-    if (props.logIn) {
-      setEmail(props.user.email);
-      setAddress(props.user.address);
-      setPhoneNumber(props.user.phone);
-      setFullname(props.user.fullname);
-    }
-  }, [props.user, props.logIn]);
+  // useEffect(() => {
+  //   if (props.logIn) {
+  //     setEmail(props.user.email);
+  //     setAddress(props.user.address);
+  //     setPhoneNumber(props.user.phone);
+  //     setFullname(props.user.fullname);
+  //   }
+  // }, [props.user, props.logIn]);
 
   function handleselectChange(event) {
     setSelectValue(event.target.value);
