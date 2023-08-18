@@ -50,6 +50,8 @@ function MyCart(props) {
     setNoti(false);
   };
 
+  console.log(props.customerCart);
+
   return (
     <div className="cartWrapper">
       <Drawer

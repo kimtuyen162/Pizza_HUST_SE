@@ -8,3 +8,32 @@
     font-family: poppins;
     color: #550312;
 }
+
+.editForm {
+    border-radius: 20px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    max-width: 60%;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.editForm p {
+    margin-top: 20px;
+    margin-left: 40px;
+    font-family: poppins;
+    color: #550312;
+}
+
+.editForm h1 {
+    margin-left: 20px;
+    font-family: poppins;
+    color: #550312;
+}
+
+.editContainer {
+    align-items: center;
+    justify-content: center;
+}

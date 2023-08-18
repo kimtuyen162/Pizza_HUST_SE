@@ -103,7 +103,7 @@ function PizzaMenu(props) {
 
   function handleClick(item) {
     const selPizza = PizzaArray.find((pizza) => {
-      return pizza.pizza_id === item.pizza_id;
+      return pizza._id === item._id;
     });
     const selCrust = CrustArray.find((item) => {
       return item.crust_name === crust;
@@ -111,6 +111,8 @@ function PizzaMenu(props) {
     const selSize = SizeArray.find((item) => {
       return item.size_name === size;
     });
+
+    console.log(selPizza);
 
     const select_pizza = {
       name: selPizza.pizza_name,

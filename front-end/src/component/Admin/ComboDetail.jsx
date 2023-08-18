@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function ComboDetail() {
   const { id } = useParams();
@@ -32,23 +33,25 @@ function ComboDetail() {
     }
     fetchCombo();
   }, [id]);
-  console.log(starter);
   return (
     <div className="detailContainer">
       <h1>{combo.combo_name}</h1>
-      <Button
-        sx={{
-          mr: 2,
-          border: 1,
-          color: "#550312",
-          borderRadius: "40px",
-          borderColor: "#550312",
-          height: "100%",
-          width: "10%",
-        }}
-      >
-        Edit
-      </Button>
+
+      <Link to={`/admin/edit/Combo/editCombo/${combo._id}`}>
+        <Button
+          sx={{
+            mr: 2,
+            border: 1,
+            color: "#550312",
+            borderRadius: "40px",
+            borderColor: "#550312",
+            height: "100%",
+            width: "10%",
+          }}
+        >
+          Edit
+        </Button>
+      </Link>
       <Button
         sx={{
           border: 1,
