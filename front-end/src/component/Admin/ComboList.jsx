@@ -24,6 +24,21 @@ function ComboList() {
 
   return (
     <div className="cartContent">
+      <Link to={`/admin/edit/Combo/create`}>
+        <Button
+          sx={{
+            mr: 2,
+            border: 1,
+            color: "#550312",
+            borderRadius: "40px",
+            borderColor: "#550312",
+            height: "100%",
+            width: "10%",
+          }}
+        >
+          + Create
+        </Button>
+      </Link>
       <List sx={{ maxHeight: "100%", overflow: "auto" }}>
         {rows.map((item, index) => {
           return (

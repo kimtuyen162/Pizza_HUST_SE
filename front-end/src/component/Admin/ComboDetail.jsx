@@ -3,8 +3,10 @@ import axios from "axios";
 import { useParams } from "react-router";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 function ComboDetail() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [combo, setCombo] = React.useState([]);
   const [starter, setStarter] = React.useState([]);
@@ -33,6 +35,18 @@ function ComboDetail() {
     }
     fetchCombo();
   }, [id]);
+
+  function handleDelete() {
+    axios
+      .delete(`http://localhost:4000/api/combo/${id}`)
+      .then((response) => {
+        console.log(response.data);
+        navigate("/admin/edit/Combo");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   return (
     <div className="detailContainer">
       <h1>{combo.combo_name}</h1>
@@ -53,6 +67,7 @@ function ComboDetail() {
         </Button>
       </Link>
       <Button
+        onClick={handleDelete}
         sx={{
           border: 1,
           color: "#550312",

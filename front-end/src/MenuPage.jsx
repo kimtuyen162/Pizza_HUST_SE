@@ -18,6 +18,7 @@ import AdminPage from "./page/AdminPage";
 import ComboDetail from "./component/Admin/ComboDetail";
 import AdminSelect from "./component/Admin/AdminSelect";
 import EditCombo from "./component/Admin/EditCombo";
+import CreateCombo from "./component/Admin/CreateCombo";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -246,6 +247,10 @@ function MenuPage() {
               <Route
                 path="/admin/edit/Combo/editCombo/:id"
                 element={<EditCombo />}
+              />
+              <Route
+                path="/admin/edit/Combo/create"
+                element={<CreateCombo />}
               />
             </Route>
             <Route

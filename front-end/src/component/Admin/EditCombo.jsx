@@ -7,8 +7,6 @@ const EditCombo = (props) => {
   const navigate = useNavigate();
   const [emptyField, setEmptyField] = useState(false);
   const [wrongInfo, setWrongInfo] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [description, setDesc] = useState("");
   const [price, setPrice] = useState("");
@@ -43,7 +41,8 @@ const EditCombo = (props) => {
   };
 
   function handleClick() {
-    if ((email === "") | (password === "")) setEmptyField(true);
+    if ((name === "") | (price === "") | (description === "") | (image === ""))
+      setEmptyField(true);
     else {
       const payload = {
         combo_name: name,
@@ -53,9 +52,10 @@ const EditCombo = (props) => {
       };
 
       axios
-        .patch("http://localhost:4000/api/combo", payload)
+        .patch(`http://localhost:4000/api/combo/${id}`, payload)
         .then((response) => {
           console.log(response.data);
+          navigate("/admin/edit/Combo");
         })
         .catch((error) => {
           setWrongInfo(true);
@@ -63,7 +63,6 @@ const EditCombo = (props) => {
         });
     }
   }
-  console.log(description);
   return (
     <div className="editContainer">
       <div className="editForm">
