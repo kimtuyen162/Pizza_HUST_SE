@@ -62,7 +62,14 @@ function ComboMenu(props) {
                   alt="pizza1"
                 />
                 <CardContent sx={{ pb: 0 }}>
-                  <div className="descriptionWrapper">
+                  <div
+                    className="descriptionWrapper"
+                    style={{
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      marginBottom: "15px",
+                    }}
+                  >
                     <h2>{item.combo_name}</h2>
                     <div>{item.combo_description}</div>
                   </div>

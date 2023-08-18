@@ -14,6 +14,9 @@ import Signin from "./component/Signin/Signin";
 import Signup from "./component/Signup/Signup";
 import axios from "axios";
 import LogOut from "./component/LogOut";
+import AdminPage from "./page/AdminPage";
+import ComboDetail from "./component/Admin/ComboDetail";
+import AdminSelect from "./component/Admin/AdminSelect";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -213,7 +216,10 @@ function MenuPage() {
               />
             }
           />
-          <Route path="/home" element={<Homepage logIn={logged} />}>
+          <Route
+            path="/home"
+            element={<Homepage logIn={logged} admin={false} />}
+          >
             <Route
               path="/home"
               element={<HomeArea logIn={logged} user={user} />}
@@ -222,6 +228,23 @@ function MenuPage() {
             <Route path="/home/SignUp" element={<Signup />} />
             <Route
               path="/home/LogOut"
+              element={<LogOut handleLogOut={handleLogOut} />}
+            />
+          </Route>
+          <Route
+            path="/admin"
+            element={<Homepage logIn={logged} admin={true} />}
+          >
+            <Route
+              path="/admin"
+              element={<HomeArea logIn={logged} user={user} />}
+            />
+            <Route path="/admin/edit" element={<AdminPage />}>
+              <Route path="/admin/edit/:select" element={<AdminSelect />} />
+              <Route path="/admin/edit/Combo/:id" element={<ComboDetail />} />
+            </Route>
+            <Route
+              path="/admin/LogOut"
               element={<LogOut handleLogOut={handleLogOut} />}
             />
           </Route>

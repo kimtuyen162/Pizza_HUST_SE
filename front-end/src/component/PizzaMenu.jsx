@@ -148,7 +148,14 @@ function PizzaMenu(props) {
                   alt="pizza1"
                 />
                 <CardContent sx={{ pb: 0 }}>
-                  <div className="descriptionWrapper">
+                  <div
+                    style={{
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      marginBottom: "15px",
+                    }}
+                    className="descriptionWrapper"
+                  >
                     <h2>{item.pizza_name}</h2>
                     <div>{item.pizza_description}</div>
                   </div>

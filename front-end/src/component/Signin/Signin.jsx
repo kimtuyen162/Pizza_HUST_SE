@@ -44,7 +44,8 @@ const Signin = (props) => {
         .then((response) => {
           console.log(response.data);
           props.setUser(response.data);
-          navigate("/home");
+          if (response.data.email === "duc@gmail.com") navigate("/admin");
+          else navigate("/home");
         })
         .catch((error) => {
           setWrongInfo(true);

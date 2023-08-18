@@ -3,6 +3,11 @@
     src: url(../../public/fonts/Poppins-Regular.ttf);
 }
 
+@font-face {
+    font-family: lacquer;
+    src: url(../../public/fonts/Lacquer-Regular.ttf);
+}
+
 .navBar{
     display: grid;
     grid-template-columns:auto auto auto auto auto;
@@ -23,8 +28,8 @@
 
 .navTitle{
     text-align: center;
-    font-size: 30px;
-    font-family: poppins;
+    font-size: 35px;
+    font-family: lacquer;
     color: #550312;
 }
 
@@ -120,12 +125,12 @@ nav ul{
 }
 
 .loggedItem{
-    text-align: right;
-        margin-top: auto;
-        margin-bottom: auto;
-        text-decoration: none;
-        font-family: poppins;
-        color: #550312;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-decoration: none;
+    font-family: poppins;
+    color: #550312;
 }
 
 .logoutContainer{

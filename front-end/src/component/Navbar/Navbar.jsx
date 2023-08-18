@@ -8,37 +8,43 @@ const Navbar = (props) => {
       <nav>
         <ul>
           <li className="navBar">
-            <a className="navItem" href="/home">
+            <Link className="navItem" to={props.admin ? "/admin" : "/home"}>
               <h1>Home</h1>
-            </a>
-            <a className="navItem" href="/menu/Combo">
+            </Link>
+            <Link className="navItem" to="/menu/Combo">
               <h1>Menu</h1>
-            </a>
+            </Link>
             <h1 className="navTitle">PIZZA HUST</h1>
-            <a
+            <Link
               className="navItem"
-              href="/home/SignIn"
+              to="/home/SignIn"
               style={{ display: props.logIn ? "none" : "" }}
             >
               <h1>Log In</h1>
-            </a>
-            <a
+            </Link>
+            <Link
               className="navItem"
-              href="/home/SignUp"
+              to="/home/SignUp"
               style={{ display: props.logIn ? "none" : "" }}
             >
               <h1>Sign Up</h1>
-            </a>
-            <h1
+            </Link>
+            <Link
+              className="navItem"
+              to={props.admin ? "/admin/edit/Combo" : ""}
+              style={{ display: props.logIn ? "" : "none" }}
+            >
+              <h1>{props.admin ? "Manage" : ""}</h1>
+            </Link>
+            <div
               className="loggedItem"
               style={{
                 display: props.logIn ? "" : "none",
               }}
             >
-              <Link to="/home/LogOut">
+              <Link to={props.admin ? "/admin/LogOut" : "/home/LogOut"}>
                 <Button
                   sx={{
-                    m: 4,
                     bottom: 0,
                     backgroundColor: "#550312",
                     border: 1,
@@ -53,7 +59,7 @@ const Navbar = (props) => {
                   Log Out
                 </Button>
               </Link>
-            </h1>
+            </div>
           </li>
         </ul>
       </nav>
