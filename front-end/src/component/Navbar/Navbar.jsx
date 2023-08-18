@@ -1,4 +1,6 @@
+import { Button } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
   return (
@@ -18,7 +20,7 @@ const Navbar = (props) => {
               href="/home/SignIn"
               style={{ display: props.logIn ? "none" : "" }}
             >
-              <h1>Sign in</h1>
+              <h1>Log In</h1>
             </a>
             <a
               className="navItem"
@@ -33,7 +35,24 @@ const Navbar = (props) => {
                 display: props.logIn ? "" : "none",
               }}
             >
-              User Logged In
+              <Link to="/home/LogOut">
+                <Button
+                  sx={{
+                    m: 4,
+                    bottom: 0,
+                    backgroundColor: "#550312",
+                    border: 1,
+                    color: "white",
+                    borderRadius: "40px",
+                    ":hover": {
+                      bgcolor: "white",
+                      color: "#550312",
+                    },
+                  }}
+                >
+                  Log Out
+                </Button>
+              </Link>
             </h1>
           </li>
         </ul>
