@@ -5,7 +5,8 @@ const Schema = mongoose.Schema
 const pizzaSchema = new Schema({
   pizza_name:{
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   pizza_price:{
     type: Number,

@@ -45,9 +45,21 @@ const createPizza = async (req, res) => {
 //delete ouzza
 const deletePizza = async (req, res) => {
   const { id } = req.params;
+  const combos = await Combo.find({})
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "No such pizza" });
+  }
+
+  for (const combo of combos){
+    const { pizzas } = combo;
+    for (const pizza of pizzas){
+      console.log(id);
+      console.log(pizza.pizza.toString());
+      console.log('\n');
+      if (id == pizza.pizza.toString())
+       return res.status(406).json({error : "Item in a combo"})
+    }
   }
 
   const pizza = await Pizza.findOneAndDelete({ _id: id });

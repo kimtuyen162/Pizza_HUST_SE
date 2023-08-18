@@ -1,3 +1,4 @@
+const Combo = require("../models/comboModel");
 const Drink = require('../models/drinkModel')
 const mongoose = require('mongoose')
 
@@ -41,9 +42,21 @@ const createDrink = async (req, res) => {
 //delete ouzza
 const deleteDrink = async (req, res) => {
   const { id } = req.params
+  const combos = await Combo.find({})
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({error : "No such drink"})
+  }
+
+  for (const combo of combos){
+    const { drinks } = combo;
+    for (const drink of drinks){
+      console.log(id);
+      console.log(drink.drink.toString());
+      console.log('\n');
+      if (id == drink.drink.toString())
+       return res.status(406).json({error : "Item in a combo"})
+    }
   }
 
   const drink = await Drink.findOneAndDelete({_id: id})
