@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 
-const EditCombo = (props) => {
+const EditStarter = (props) => {
   const navigate = useNavigate();
   const [emptyField, setEmptyField] = useState(false);
   const [wrongInfo, setWrongInfo] = useState(false);
@@ -18,12 +18,12 @@ const EditCombo = (props) => {
   useEffect(() => {
     async function fetchCombo() {
       await axios
-        .get(`http://localhost:4000/api/combo/${id}`)
+        .get(`http://localhost:4000/api/starter/${id}`)
         .then((response) => {
           console.log(response.data);
-          setName(response.data.combo_name);
-          setDesc(response.data.combo_description);
-          setPrice(response.data.combo_price);
+          setName(response.data.starter_name);
+          setDesc(response.data.starter_description);
+          setPrice(response.data.starter_price);
           setImage(response.data.image);
         })
         .catch((error) => {
@@ -53,18 +53,18 @@ const EditCombo = (props) => {
     if ((name === "") | (price === "") | (image === "")) setEmptyField(true);
     else {
       const payload = {
-        combo_name: name,
-        combo_description: description,
-        combo_price: price,
+        starter_name: name,
+        starter_description: description,
+        starter_price: price,
         image: image,
       };
 
       axios
-        .patch(`http://localhost:4000/api/combo/${id}`, payload)
+        .patch(`http://localhost:4000/api/starter/${id}`, payload)
         .then((response) => {
           console.log(response.data);
           setNoti(true);
-          navigate("/admin/edit/Combo");
+          navigate("/admin/edit/Starters");
         })
         .catch((error) => {
           setWrongInfo(true);
@@ -75,7 +75,7 @@ const EditCombo = (props) => {
   return (
     <div className="editContainer">
       <div className="editForm">
-        <h1>Edit Combo</h1>
+        <h1>Edit Starter</h1>
         <p>ID</p>
         <div className="inputWrapper">
           <TextField
@@ -185,4 +185,4 @@ const EditCombo = (props) => {
   );
 };
 
-export default EditCombo;
+export default EditStarter;

@@ -4,14 +4,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-function PizzaList() {
+function DrinkList() {
   const [rows, setRows] = useState([]);
   const [open, setOpen] = useState(-1);
 
   useEffect(() => {
     async function fetchPizza() {
       await axios
-        .get("http://localhost:4000/api/pizza")
+        .get("http://localhost:4000/api/drink")
         .then((response) => {
           setRows(response.data);
         })
@@ -23,7 +23,7 @@ function PizzaList() {
   }, []);
   return (
     <div className="cartContent">
-      <Link to={`/admin/edit/Pizza/create`}>
+      <Link to={`/admin/edit/Drink/create`}>
         <Button
           sx={{
             mr: 2,
@@ -60,17 +60,17 @@ function PizzaList() {
                     />
                   </div>
                   <div className="amountWrapper">{item._id}</div>
-                  <div className="nameWrapper">{item.pizza_name}</div>
+                  <div className="nameWrapper">{item.drink_name}</div>
                   <div className="cartPriceWrapper">
                     {new Intl.NumberFormat("vi-VN", {
                       style: "currency",
                       currency: "VND",
-                    }).format(item.pizza_price)}
+                    }).format(item.drink_price)}
                   </div>
                 </div>
               </Button>
               <div className="deleteWrapper">
-                <Link to={`/admin/edit/Pizza/${item._id}`}>
+                <Link to={`/admin/edit/Drinks/${item._id}`}>
                   <IconButton
                     // onClick={() => handleClickDelete(item)}
                     sx={{
@@ -91,4 +91,4 @@ function PizzaList() {
   );
 }
 
-export default PizzaList;
+export default DrinkList;

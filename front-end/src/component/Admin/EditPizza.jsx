@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 
-const EditCombo = (props) => {
+const EditPizza = (props) => {
   const navigate = useNavigate();
   const [emptyField, setEmptyField] = useState(false);
   const [wrongInfo, setWrongInfo] = useState(false);
@@ -18,12 +18,12 @@ const EditCombo = (props) => {
   useEffect(() => {
     async function fetchCombo() {
       await axios
-        .get(`http://localhost:4000/api/combo/${id}`)
+        .get(`http://localhost:4000/api/pizza/${id}`)
         .then((response) => {
           console.log(response.data);
-          setName(response.data.combo_name);
-          setDesc(response.data.combo_description);
-          setPrice(response.data.combo_price);
+          setName(response.data.pizza_name);
+          setDesc(response.data.pizza_description);
+          setPrice(response.data.pizza_price);
           setImage(response.data.image);
         })
         .catch((error) => {
@@ -33,14 +33,6 @@ const EditCombo = (props) => {
     fetchCombo();
   }, [id]);
 
-  const handleCloseNoti = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setNoti(false);
-  };
-
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -49,22 +41,30 @@ const EditCombo = (props) => {
     setWrongInfo(false);
   };
 
+  const handleCloseNoti = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setNoti(false);
+  };
+
   function handleClick() {
     if ((name === "") | (price === "") | (image === "")) setEmptyField(true);
     else {
       const payload = {
-        combo_name: name,
-        combo_description: description,
-        combo_price: price,
+        pizza_name: name,
+        pizza_description: description,
+        pizza_price: price,
         image: image,
       };
 
       axios
-        .patch(`http://localhost:4000/api/combo/${id}`, payload)
+        .patch(`http://localhost:4000/api/pizza/${id}`, payload)
         .then((response) => {
           console.log(response.data);
           setNoti(true);
-          navigate("/admin/edit/Combo");
+          navigate("/admin/edit/Pizza");
         })
         .catch((error) => {
           setWrongInfo(true);
@@ -75,7 +75,7 @@ const EditCombo = (props) => {
   return (
     <div className="editContainer">
       <div className="editForm">
-        <h1>Edit Combo</h1>
+        <h1>Edit Pizza</h1>
         <p>ID</p>
         <div className="inputWrapper">
           <TextField
@@ -185,4 +185,4 @@ const EditCombo = (props) => {
   );
 };
 
-export default EditCombo;
+export default EditPizza;

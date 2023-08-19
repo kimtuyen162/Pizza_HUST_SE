@@ -19,6 +19,15 @@ import ComboDetail from "./component/Admin/ComboDetail";
 import AdminSelect from "./component/Admin/AdminSelect";
 import EditCombo from "./component/Admin/EditCombo";
 import CreateCombo from "./component/Admin/CreateCombo";
+import EditPizza from "./component/Admin/EditPizza";
+import CreatePizza from "./component/Admin/CreatePizza";
+import EditDrink from "./component/Admin/EditDrink";
+import CreateDrink from "./component/Admin/CreateDrink";
+import EditStarter from "./component/Admin/EditStarter";
+import CreateStarter from "./component/Admin/CreateStarter";
+import StarterDetail from "./component/Admin/StarterDetail";
+import PizzaDetail from "./component/Admin/PizzaDetail";
+import DrinkDetail from "./component/Admin/DrinkDetail";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -251,6 +260,39 @@ function MenuPage() {
               <Route
                 path="/admin/edit/Combo/create"
                 element={<CreateCombo />}
+              />
+              {/* admin pizza */}
+              <Route path="/admin/edit/Pizza/:id" element={<PizzaDetail />} />
+              <Route
+                path="/admin/edit/Pizza/editPizza/:id"
+                element={<EditPizza />}
+              />
+              <Route
+                path="/admin/edit/Pizza/create"
+                element={<CreatePizza />}
+              />
+              {/* admin drink */}
+              <Route path="/admin/edit/Drinks/:id" element={<DrinkDetail />} />
+              <Route
+                path="/admin/edit/Drinks/editDrink/:id"
+                element={<EditDrink />}
+              />
+              <Route
+                path="/admin/edit/Drinks/create"
+                element={<CreateDrink />}
+              />
+              {/* admin starter */}
+              <Route
+                path="/admin/edit/Starters/:id"
+                element={<StarterDetail />}
+              />
+              <Route
+                path="/admin/edit/Starters/editStarter/:id"
+                element={<EditStarter />}
+              />
+              <Route
+                path="/admin/edit/Starters/create"
+                element={<CreateStarter />}
               />
             </Route>
             <Route

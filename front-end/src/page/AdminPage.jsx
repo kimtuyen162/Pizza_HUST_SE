@@ -3,7 +3,7 @@ import { Button, Grid } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
 import "../style/adminstyle.css";
 
-const selections = ["Combo", "Pizza", "Starters", "Drinks", "Size", "Crust"];
+const selections = ["Combo", "Pizza", "Starters", "Drinks"];
 
 function AdminPage() {
   return (

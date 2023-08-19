@@ -1,9 +1,9 @@
 import { Alert, Button, Snackbar, TextField } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import axios from "axios";
 
-const EditCombo = (props) => {
+const CreateStarter = (props) => {
   const navigate = useNavigate();
   const [emptyField, setEmptyField] = useState(false);
   const [wrongInfo, setWrongInfo] = useState(false);
@@ -13,34 +13,6 @@ const EditCombo = (props) => {
   const [image, setImage] = useState("");
   const [noti, setNoti] = useState(false);
 
-  const { id } = useParams();
-
-  useEffect(() => {
-    async function fetchCombo() {
-      await axios
-        .get(`http://localhost:4000/api/combo/${id}`)
-        .then((response) => {
-          console.log(response.data);
-          setName(response.data.combo_name);
-          setDesc(response.data.combo_description);
-          setPrice(response.data.combo_price);
-          setImage(response.data.image);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-    fetchCombo();
-  }, [id]);
-
-  const handleCloseNoti = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setNoti(false);
-  };
-
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -49,22 +21,30 @@ const EditCombo = (props) => {
     setWrongInfo(false);
   };
 
+  const handleCloseNoti = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setNoti(false);
+  };
   function handleClick() {
-    if ((name === "") | (price === "") | (image === "")) setEmptyField(true);
+    if ((name === "") | (price === "") | (description === "") | (image === ""))
+      setEmptyField(true);
     else {
       const payload = {
-        combo_name: name,
-        combo_description: description,
-        combo_price: price,
+        starter_name: name,
+        starter_description: description,
+        starter_price: price,
         image: image,
       };
 
       axios
-        .patch(`http://localhost:4000/api/combo/${id}`, payload)
+        .post(`http://localhost:4000/api/starter`, payload)
         .then((response) => {
           console.log(response.data);
           setNoti(true);
-          navigate("/admin/edit/Combo");
+          navigate("/admin/edit/Starters");
         })
         .catch((error) => {
           setWrongInfo(true);
@@ -75,20 +55,7 @@ const EditCombo = (props) => {
   return (
     <div className="editContainer">
       <div className="editForm">
-        <h1>Edit Combo</h1>
-        <p>ID</p>
-        <div className="inputWrapper">
-          <TextField
-            disabled
-            label="ID"
-            defaultValue={id}
-            sx={{ width: "80%", m: 1 }}
-            size="small"
-            error={emptyField}
-            helperText={emptyField ? "Please fill this field" : ""}
-          />
-        </div>
-
+        <h1>Create New Starter</h1>
         <p>Name</p>
         <div className="inputWrapper">
           <TextField
@@ -137,26 +104,27 @@ const EditCombo = (props) => {
             helperText={emptyField ? "Please fill this field" : ""}
           />
         </div>
-
-        <Button
-          sx={{
-            m: 4,
-            bottom: 0,
-            width: "50%",
-            backgroundColor: "#550312",
-            border: 1,
-            color: "white",
-            borderRadius: "40px",
-            ":hover": {
-              bgcolor: "white",
-              color: "#550312",
-            },
-          }}
-          onClick={handleClick}
-        >
-          Edit
-        </Button>
       </div>
+      <Button
+        sx={{
+          mt: 8,
+          mb: 8,
+          ml: 100,
+          right: 0,
+          width: "20%",
+          backgroundColor: "#550312",
+          border: 1,
+          color: "white",
+          borderRadius: "40px",
+          ":hover": {
+            bgcolor: "white",
+            color: "#550312",
+          },
+        }}
+        onClick={handleClick}
+      >
+        Create
+      </Button>
       <Snackbar
         open={wrongInfo}
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
@@ -185,4 +153,4 @@ const EditCombo = (props) => {
   );
 };
 
-export default EditCombo;
+export default CreateStarter;

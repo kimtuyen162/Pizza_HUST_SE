@@ -12,6 +12,7 @@ const CreateCombo = (props) => {
   const [description, setDesc] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
+  const [noti, setNoti] = useState(false);
   // pizza
   const [pizzas, setPizza] = useState([]);
   const [pizza, setPiz] = useState("");
@@ -33,6 +34,14 @@ const CreateCombo = (props) => {
     }
 
     setWrongInfo(false);
+  };
+
+  const handleCloseNoti = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setNoti(false);
   };
 
   function handleAddStarter() {
@@ -147,6 +156,7 @@ const CreateCombo = (props) => {
         .post(`http://localhost:4000/api/combo`, payload)
         .then((response) => {
           console.log(response.data);
+          setNoti(true);
           navigate("/admin/edit/Combo");
         })
         .catch((error) => {
@@ -467,6 +477,20 @@ const CreateCombo = (props) => {
       >
         <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
           Something went wrong!
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={noti}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        autoHideDuration={2000}
+        onClose={handleCloseNoti}
+      >
+        <Alert
+          onClose={handleCloseNoti}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          Success
         </Alert>
       </Snackbar>
     </div>

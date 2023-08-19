@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 
-const EditCombo = (props) => {
+const EditDrink = (props) => {
   const navigate = useNavigate();
   const [emptyField, setEmptyField] = useState(false);
   const [wrongInfo, setWrongInfo] = useState(false);
@@ -15,15 +15,23 @@ const EditCombo = (props) => {
 
   const { id } = useParams();
 
+  const handleCloseNoti = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setNoti(false);
+  };
+
   useEffect(() => {
     async function fetchCombo() {
       await axios
-        .get(`http://localhost:4000/api/combo/${id}`)
+        .get(`http://localhost:4000/api/drink/${id}`)
         .then((response) => {
           console.log(response.data);
-          setName(response.data.combo_name);
-          setDesc(response.data.combo_description);
-          setPrice(response.data.combo_price);
+          setName(response.data.drink_name);
+          setDesc(response.data.drink_description);
+          setPrice(response.data.drink_price);
           setImage(response.data.image);
         })
         .catch((error) => {
@@ -32,14 +40,6 @@ const EditCombo = (props) => {
     }
     fetchCombo();
   }, [id]);
-
-  const handleCloseNoti = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setNoti(false);
-  };
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -50,21 +50,22 @@ const EditCombo = (props) => {
   };
 
   function handleClick() {
-    if ((name === "") | (price === "") | (image === "")) setEmptyField(true);
+    if ((name === "") | (price === "") | (image === ""))
+      setEmptyField(true);
     else {
       const payload = {
-        combo_name: name,
-        combo_description: description,
-        combo_price: price,
+        drink_name: name,
+        drink_description: description,
+        drink_price: price,
         image: image,
       };
 
       axios
-        .patch(`http://localhost:4000/api/combo/${id}`, payload)
+        .patch(`http://localhost:4000/api/drink/${id}`, payload)
         .then((response) => {
           console.log(response.data);
           setNoti(true);
-          navigate("/admin/edit/Combo");
+          navigate("/admin/edit/Drinks");
         })
         .catch((error) => {
           setWrongInfo(true);
@@ -75,7 +76,7 @@ const EditCombo = (props) => {
   return (
     <div className="editContainer">
       <div className="editForm">
-        <h1>Edit Combo</h1>
+        <h1>Edit Drink</h1>
         <p>ID</p>
         <div className="inputWrapper">
           <TextField
@@ -185,4 +186,4 @@ const EditCombo = (props) => {
   );
 };
 
-export default EditCombo;
+export default EditDrink;

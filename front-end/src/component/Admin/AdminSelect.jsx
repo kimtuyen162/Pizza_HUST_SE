@@ -1,6 +1,9 @@
 import React from "react";
 import { useParams } from "react-router";
 import ComboList from "./ComboList";
+import PizzaList from "./PizzaList";
+import StarterList from "./StarterList";
+import DrinkList from "./DrinkList";
 
 function AdminSelect() {
   const { select } = useParams();
@@ -10,14 +13,11 @@ function AdminSelect() {
     case "Combo":
       return <ComboList />;
     case "Pizza":
-      break;
-    // return <PizzaMenu addPizza={addItem} />;
+      return <PizzaList />;
     case "Drinks":
-      break;
-    // return <DrinkMenu addDrink={addItem} />;
+      return <DrinkList />;
     default:
-      break;
-    // return <StarterMenu addStarter={addItem} />;
+      return <StarterList />;
   }
 }
 

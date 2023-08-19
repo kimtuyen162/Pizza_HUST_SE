@@ -81,6 +81,13 @@ function ComboDetail() {
       </Button>
       <p>ID: {combo._id}</p>
       <p>Description: {combo.combo_description}</p>
+      <p>
+        Price:
+        {new Intl.NumberFormat("vi-VN", {
+          style: "currency",
+          currency: "VND",
+        }).format(combo.combo_price)}
+      </p>
       <p>Image file: {combo.image}</p>
       <h2>Pizzas:</h2>
       <ul>
