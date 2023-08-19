@@ -41,9 +41,21 @@ const createStarter = async (req, res) => {
 //delete ouzza
 const deleteStarter = async (req, res) => {
   const { id } = req.params
+  const combos = await Combo.find({})
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({error : "No such starter"})
+  }
+
+  for (const combo of combos){
+    const { starters } = combo;
+    for (const starter of starters){
+      console.log(id);
+      console.log(starter.starter.toString());
+      console.log('\n');
+      if (id == starter.starter.toString())
+       return res.status(406).json({error : "Item in a combo"})
+    }
   }
 
   const starter = await Starter.findOneAndDelete({_id: id})

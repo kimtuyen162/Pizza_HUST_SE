@@ -9,7 +9,11 @@ const Homepage = (props) => {
       <div className="backGround" />
       <header>
         <div className="homeWrapper">
-          <Navbar logIn={props.logIn} handleLogOut={props.handleLogOut} />
+          <Navbar
+            logIn={props.logIn}
+            handleLogOut={props.handleLogOut}
+            admin={props.admin}
+          />
         </div>
       </header>
       <Outlet />

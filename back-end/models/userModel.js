@@ -12,10 +12,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    email: { 
-      type: String, 
+    email: {
+      type: String,
       unique: true,
-      required: true, 
+      required: true,
     },
     phone: {
       type: String,
@@ -23,6 +23,9 @@ const userSchema = new Schema(
     },
     address: {
       type: String,
+    },
+    isAdmin: {
+      type: Boolean,
     },
   },
   { timestamps: true }

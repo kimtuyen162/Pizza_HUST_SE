@@ -5,7 +5,8 @@ const Schema = mongoose.Schema
 const crustSchema = new Schema({
   crust_name:{
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   crust_price:{
     type: Number,

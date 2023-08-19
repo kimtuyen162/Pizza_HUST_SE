@@ -62,7 +62,14 @@ function DrinkMenu(props) {
                   alt="drink"
                 />
                 <CardContent sx={{ pb: 0 }}>
-                  <div className="descriptionWrapper">
+                  <div
+                    className="descriptionWrapper"
+                    style={{
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      marginBottom: "15px",
+                    }}
+                  >
                     <h2>{item.drink_name}</h2>
                     <div>{item.drink_description}</div>
                   </div>

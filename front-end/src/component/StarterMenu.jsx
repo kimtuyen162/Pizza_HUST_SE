@@ -60,7 +60,14 @@ function StarterMenu(props) {
                   image={require(`../image/${item.image}`)}
                   alt="starter"
                 />
-                <CardContent sx={{ pb: 0 }}>
+                <CardContent
+                  sx={{ pb: 0 }}
+                  style={{
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    marginBottom: "15px",
+                  }}
+                >
                   <div className="descriptionWrapper">
                     <h2>{item.starter_name}</h2>
                     <div>{item.starter_description}</div>

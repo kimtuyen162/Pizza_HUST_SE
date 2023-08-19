@@ -5,7 +5,8 @@ const Schema = mongoose.Schema
 const starterSchema = new Schema({
   starter_name:{
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   starter_price:{
     type: Number,

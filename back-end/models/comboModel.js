@@ -5,7 +5,8 @@ const Schema = mongoose.Schema
 const comboSchema = new Schema({
   combo_name:{
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   combo_price:{
     type: Number,

@@ -1,7 +1,16 @@
-import { Alert, Button, Snackbar, TextField } from "@mui/material";
+import {
+  Alert,
+  Button,
+  IconButton,
+  InputAdornment,
+  Snackbar,
+  TextField,
+} from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -12,6 +21,9 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -109,8 +121,23 @@ const Signup = () => {
             onChange={(e) => setPassword(e.target.value)}
             sx={{ width: "80%", m: 1 }}
             size="small"
+            type={showPassword ? "text" : "password"}
             error={emptyField}
             helperText={emptyField ? "Please fill this field" : ""}
+            InputProps={{
+              // <-- This is where the toggle button is added.
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
         </div>
         <Button

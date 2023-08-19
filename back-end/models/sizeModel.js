@@ -5,7 +5,8 @@ const Schema = mongoose.Schema
 const sizeSchema = new Schema({
   size_name:{
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   size_price:{
     type: Number,
