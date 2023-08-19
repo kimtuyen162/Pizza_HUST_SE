@@ -102,6 +102,22 @@ const deleteOrder = async (req, res) => {
   }
 };
 
+const cancelOrder = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such order" });
+  }
+
+  try {
+    const canceledOrder = await Order.findByIdAndUpdate(id, {"status": "canceled"}, {
+      new: true,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 module.exports = {
   createOrder,
   getAllOrders,

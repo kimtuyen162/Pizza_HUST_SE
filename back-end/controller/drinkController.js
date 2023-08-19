@@ -1,4 +1,4 @@
-const Combo = require("../models/comboModel");
+const Combo = require("../models/comboModel")
 const Drink = require('../models/drinkModel')
 const mongoose = require('mongoose')
 
