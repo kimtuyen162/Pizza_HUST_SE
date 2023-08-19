@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Header(props) {
   return (
     <div className="headerLogoContainer">
-      <Link className="homeLink" to="/home">
+      <Link className="homeLink" to={props.admin ? "/admin" : "/home"}>
         <IconButton sx={{ color: "#550312" }}>
           <Icon icon="mingcute:arrow-left-fill" />
         </IconButton>

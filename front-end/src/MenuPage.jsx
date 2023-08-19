@@ -44,6 +44,8 @@ function MenuPage() {
 
   const [noti, setNoti] = useState(false);
 
+  const [admin, setAdmin] = useState(false);
+
   const [notiComplete, setNotiComplete] = useState(false);
 
   useEffect(() => {
@@ -141,6 +143,9 @@ function MenuPage() {
       )
     );
   }
+  function setisAdmin() {
+    setAdmin(true);
+  }
 
   function handleLogOut() {
     axios
@@ -148,6 +153,7 @@ function MenuPage() {
       .then((response) => {
         console.log(response.data);
         setLogged(false);
+        setAdmin(false);
         const payload = {
           email: "default",
           password: "default",
@@ -198,6 +204,7 @@ function MenuPage() {
             path="/menu"
             element={
               <MenuLayOut
+                admin={admin}
                 headerText={"Our Menu"}
                 calTotal={total}
                 customerCart={cart}
@@ -208,7 +215,7 @@ function MenuPage() {
           >
             <Route
               path="/menu/:itemChosed"
-              element={<MenuArea addCart={addNew} />}
+              element={<MenuArea admin={admin} addCart={addNew} />}
             />
           </Route>
           <Route
@@ -235,7 +242,10 @@ function MenuPage() {
               path="/home"
               element={<HomeArea logIn={logged} user={user} />}
             />
-            <Route path="/home/SignIn" element={<Signin setUser={setUser} />} />
+            <Route
+              path="/home/SignIn"
+              element={<Signin admin={setisAdmin} setUser={setUser} />}
+            />
             <Route path="/home/SignUp" element={<Signup />} />
             <Route
               path="/home/LogOut"

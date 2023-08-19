@@ -44,8 +44,10 @@ const Signin = (props) => {
         .then((response) => {
           console.log(response.data);
           props.setUser(response.data);
-          if (response.data.isAdmin === true) navigate("/admin");
-          else navigate("/home");
+          if (response.data.isAdmin === true) {
+            props.admin();
+            navigate("/admin");
+          } else navigate("/home");
         })
         .catch((error) => {
           setWrongInfo(true);

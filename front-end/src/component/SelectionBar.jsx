@@ -45,7 +45,10 @@ function SelectionBar(props) {
             );
           })}
         </Grid>
-        <div className="checkoutWrapper">
+        <div
+          className="checkoutWrapper"
+          style={{ display: props.admin ? "none" : "" }}
+        >
           <Button
             onClick={handleClick}
             sx={{

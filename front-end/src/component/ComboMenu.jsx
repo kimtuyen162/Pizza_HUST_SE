@@ -93,6 +93,7 @@ function ComboMenu(props) {
                 </CardContent>
                 <CardActions sx={{ justifyContent: "center" }}>
                   <Button
+                    style={{ display: props.admin ? "none" : "" }}
                     onClick={() => {
                       handleClick(item);
                     }}
