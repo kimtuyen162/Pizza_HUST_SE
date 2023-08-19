@@ -288,6 +288,7 @@ function PizzaMenu(props) {
               </div>
               <div className="buttonWrapper">
                 <Button
+                  style={{ display: props.admin ? "none" : "" }}
                   sx={{
                     mx: 2,
                     my: 1,

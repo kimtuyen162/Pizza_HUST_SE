@@ -92,6 +92,7 @@ function StarterMenu(props) {
                 </CardContent>
                 <CardActions sx={{ justifyContent: "center" }}>
                   <Button
+                    style={{ display: props.admin ? "none" : "" }}
                     sx={{
                       border: 1,
                       color: "#550312",

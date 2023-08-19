@@ -17,13 +17,13 @@ function MenuArea(props) {
       {(() => {
         switch (itemChosed) {
           case "Combo":
-            return <ComboMenu addCombo={addItem} />;
+            return <ComboMenu admin={props.admin} addCombo={addItem} />;
           case "Pizza":
-            return <PizzaMenu addPizza={addItem} />;
+            return <PizzaMenu admin={props.admin} addPizza={addItem} />;
           case "Drinks":
-            return <DrinkMenu addDrink={addItem} />;
+            return <DrinkMenu admin={props.admin} addDrink={addItem} />;
           default:
-            return <StarterMenu addStarter={addItem} />;
+            return <StarterMenu admin={props.admin} addStarter={addItem} />;
         }
       })()}
     </div>

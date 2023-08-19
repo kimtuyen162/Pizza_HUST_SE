@@ -18,8 +18,12 @@ function MenuLayOut(props) {
   return (
     <div className="topWarpper">
       <div className="headerContainer">
-        <Header headerText={props.headerText} />
-        <SelectionBar calTotal={props.calTotal} openCart={openCart} />
+        <Header admin={props.admin} headerText={props.headerText} />
+        <SelectionBar
+          admin={props.admin}
+          calTotal={props.calTotal}
+          openCart={openCart}
+        />
       </div>
       <MyCart
         setCart={cartOpen}
