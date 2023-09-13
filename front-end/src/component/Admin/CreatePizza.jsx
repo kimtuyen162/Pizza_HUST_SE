@@ -40,7 +40,7 @@ const CreatePizza = (props) => {
       };
 
       axios
-        .post(`http://localhost:4000/api/pizza`, payload)
+        .post(`https://pizza-api1.onrender.com/api/pizza`, payload)
         .then((response) => {
           console.log(response.data);
           setNoti(true);

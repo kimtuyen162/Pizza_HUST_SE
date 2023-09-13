@@ -45,7 +45,7 @@ const Signup = () => {
       };
 
       axios
-        .post("http://localhost:4000/api/user/register", payload)
+        .post("https://pizza-api1.onrender.com/api/user/register", payload)
         .then((response) => {
           console.log(response.data);
           navigate("/home/SignIn");

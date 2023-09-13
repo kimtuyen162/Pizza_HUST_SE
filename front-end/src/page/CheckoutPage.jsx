@@ -63,7 +63,7 @@ function CheckoutPage(props) {
     };
 
     axios
-      .post("http://localhost:4000/api/order", payload)
+      .post("https://pizza-api1.onrender.com/api/order", payload)
       .then((response) => {
         console.log(response.data);
       })

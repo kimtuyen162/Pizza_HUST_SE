@@ -12,7 +12,7 @@ function DrinkDetail() {
   useEffect(() => {
     async function fetchCombo() {
       await axios
-        .get(`http://localhost:4000/api/drink/${id}`)
+        .get(`https://pizza-api1.onrender.com/api/drink/${id}`)
         .then((response) => {
           console.log(response.data);
           setDrink(response.data);
@@ -26,7 +26,7 @@ function DrinkDetail() {
 
   function handleDelete() {
     axios
-      .delete(`http://localhost:4000/api/drink/${id}`)
+      .delete(`https://pizza-api1.onrender.com/api/drink/${id}`)
       .then((response) => {
         console.log(response.data);
         navigate("/admin/edit/Drinks");

@@ -15,7 +15,7 @@ function ComboDetail() {
   useEffect(() => {
     async function fetchCombo() {
       await axios
-        .get(`http://localhost:4000/api/combo/${id}`)
+        .get(`https://pizza-api1.onrender.com/api/combo/${id}`)
         .then((response) => {
           console.log(response.data);
           setCombo(response.data);
@@ -38,7 +38,7 @@ function ComboDetail() {
 
   function handleDelete() {
     axios
-      .delete(`http://localhost:4000/api/combo/${id}`)
+      .delete(`https://pizza-api1.onrender.com/api/combo/${id}`)
       .then((response) => {
         console.log(response.data);
         navigate("/admin/edit/Combo");

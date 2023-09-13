@@ -18,7 +18,7 @@ const EditStarter = (props) => {
   useEffect(() => {
     async function fetchCombo() {
       await axios
-        .get(`http://localhost:4000/api/starter/${id}`)
+        .get(`https://pizza-api1.onrender.com/api/starter/${id}`)
         .then((response) => {
           console.log(response.data);
           setName(response.data.starter_name);
@@ -60,7 +60,7 @@ const EditStarter = (props) => {
       };
 
       axios
-        .patch(`http://localhost:4000/api/starter/${id}`, payload)
+        .patch(`https://pizza-api1.onrender.com/api/starter/${id}`, payload)
         .then((response) => {
           console.log(response.data);
           setNoti(true);

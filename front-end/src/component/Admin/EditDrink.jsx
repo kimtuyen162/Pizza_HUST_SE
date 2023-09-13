@@ -26,7 +26,7 @@ const EditDrink = (props) => {
   useEffect(() => {
     async function fetchCombo() {
       await axios
-        .get(`http://localhost:4000/api/drink/${id}`)
+        .get(`https://pizza-api1.onrender.com/api/drink/${id}`)
         .then((response) => {
           console.log(response.data);
           setName(response.data.drink_name);
@@ -61,7 +61,7 @@ const EditDrink = (props) => {
       };
 
       axios
-        .patch(`http://localhost:4000/api/drink/${id}`, payload)
+        .patch(`https://pizza-api1.onrender.com/api/drink/${id}`, payload)
         .then((response) => {
           console.log(response.data);
           setNoti(true);

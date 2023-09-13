@@ -48,7 +48,7 @@ const CreateCombo = (props) => {
     if ((starter === "") | (startQuan === "")) setEmptyField(true);
     else {
       axios
-        .get(`http://localhost:4000/api/starter/${starter}`)
+        .get(`https://pizza-api1.onrender.com/api/starter/${starter}`)
         .then((response) => {
           console.log(response.data);
           setStarter((current) => [
@@ -72,7 +72,7 @@ const CreateCombo = (props) => {
     if ((drink === "") | (drinkQuan === "")) setEmptyField(true);
     else {
       axios
-        .get(`http://localhost:4000/api/drink/${drink}`)
+        .get(`https://pizza-api1.onrender.com/api/drink/${drink}`)
         .then((response) => {
           console.log(response.data);
           setDrink((current) => [
@@ -97,15 +97,15 @@ const CreateCombo = (props) => {
       setEmptyField(true);
     else {
       axios
-        .get(`http://localhost:4000/api/size/${size}`)
+        .get(`https://pizza-api1.onrender.com/api/size/${size}`)
         .then((response) => {
           console.log(response.data);
           axios
-            .get(`http://localhost:4000/api/crust/${crust}`)
+            .get(`https://pizza-api1.onrender.com/api/crust/${crust}`)
             .then((response) => {
               console.log(response.data);
               axios
-                .get(`http://localhost:4000/api/pizza/${pizza}`)
+                .get(`https://pizza-api1.onrender.com/api/pizza/${pizza}`)
                 .then((response) => {
                   console.log(response.data);
                   setPizza((current) => [
@@ -152,7 +152,7 @@ const CreateCombo = (props) => {
       };
 
       axios
-        .post(`http://localhost:4000/api/combo`, payload)
+        .post(`https://pizza-api1.onrender.com/api/combo`, payload)
         .then((response) => {
           console.log(response.data);
           setNoti(true);

@@ -11,7 +11,7 @@ function StarterList() {
   useEffect(() => {
     async function fetchPizza() {
       await axios
-        .get("http://localhost:4000/api/starter")
+        .get("https://pizza-api1.onrender.com/api/starter")
         .then((response) => {
           setRows(response.data);
         })

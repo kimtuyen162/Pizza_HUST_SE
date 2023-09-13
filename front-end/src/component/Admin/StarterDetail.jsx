@@ -12,7 +12,7 @@ function StarterDetail() {
   useEffect(() => {
     async function fetchCombo() {
       await axios
-        .get(`http://localhost:4000/api/starter/${id}`)
+        .get(`https://pizza-api1.onrender.com/api/starter/${id}`)
         .then((response) => {
           console.log(response.data);
           setStarter(response.data);
@@ -26,7 +26,7 @@ function StarterDetail() {
 
   function handleDelete() {
     axios
-      .delete(`http://localhost:4000/api/starter/${id}`)
+      .delete(`https://pizza-api1.onrender.com/api/starter/${id}`)
       .then((response) => {
         console.log(response.data);
         navigate("/admin/edit/Starters");

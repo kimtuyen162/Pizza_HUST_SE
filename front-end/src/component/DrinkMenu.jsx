@@ -16,7 +16,7 @@ function DrinkMenu(props) {
   useEffect(() => {
     async function fetchDrink() {
       await axios
-        .get("http://localhost:4000/api/drink")
+        .get("https://pizza-api1.onrender.com/api/drink")
         .then((response) => {
           setDrinkArray(response.data);
         })

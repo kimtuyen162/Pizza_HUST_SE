@@ -55,7 +55,7 @@ function MenuPage() {
     };
 
     axios
-      .post("http://localhost:4000/api/user/login", payload)
+      .post("https://pizza-api1.onrender.com/api/user/login", payload)
       .then((response) => {
         console.log(response.data);
         setUse(response.data);
@@ -149,7 +149,7 @@ function MenuPage() {
 
   function handleLogOut() {
     axios
-      .post("http://localhost:4000/api/user/logout", {})
+      .post("https://pizza-api1.onrender.com/api/user/logout", {})
       .then((response) => {
         console.log(response.data);
         setLogged(false);
@@ -160,7 +160,7 @@ function MenuPage() {
         };
 
         axios
-          .post("http://localhost:4000/api/user/login", payload)
+          .post("https://pizza-api1.onrender.com/api/user/login", payload)
           .then((response) => {
             console.log(response.data);
             setUse(response.data);

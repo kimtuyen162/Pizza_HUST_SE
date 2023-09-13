@@ -11,7 +11,7 @@ function CartCollapse(props) {
 
   async function fetchPizzaInfo(item) {
     await axios
-      .get(`http://localhost:4000/api/pizza/${item.pizza}`)
+      .get(`https://pizza-api1.onrender.com/api/pizza/${item.pizza}`)
       .then((response) => {
         setPizza((current) => [...current, response.data.pizza_name]);
       })
@@ -19,7 +19,7 @@ function CartCollapse(props) {
         console.log(error);
       });
     await axios
-      .get(`http://localhost:4000/api/size/${item.size}`)
+      .get(`https://pizza-api1.onrender.com/api/size/${item.size}`)
       .then((response) => {
         setSize((current) => [...current, response.data.size_name]);
       })
@@ -27,7 +27,7 @@ function CartCollapse(props) {
         console.log(error);
       });
     await axios
-      .get(`http://localhost:4000/api/crust/${item.crust}`)
+      .get(`https://pizza-api1.onrender.com/api/crust/${item.crust}`)
       .then((response) => {
         setCrust((current) => [...current, response.data.crust_name]);
       })
@@ -38,7 +38,7 @@ function CartCollapse(props) {
 
   async function fetchDrinkInfo(item) {
     await axios
-      .get(`http://localhost:4000/api/drink/${item.drink}`)
+      .get(`https://pizza-api1.onrender.com/api/drink/${item.drink}`)
       .then((response) => {
         setDrink((current) => [...current, response.data.drink_name]);
       })
@@ -48,7 +48,7 @@ function CartCollapse(props) {
   }
   async function fetchStarterInfo(item) {
     await axios
-      .get(`http://localhost:4000/api/starter/${item.starter}`)
+      .get(`https://pizza-api1.onrender.com/api/starter/${item.starter}`)
       .then((response) => {
         setStarter((current) => [...current, response.data.starter_name]);
       })

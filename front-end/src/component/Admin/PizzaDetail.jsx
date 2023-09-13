@@ -12,7 +12,7 @@ function PizzaDetail() {
   useEffect(() => {
     async function fetchCombo() {
       await axios
-        .get(`http://localhost:4000/api/pizza/${id}`)
+        .get(`https://pizza-api1.onrender.com/api/pizza/${id}`)
         .then((response) => {
           console.log(response.data);
           setPizza(response.data);
@@ -26,7 +26,7 @@ function PizzaDetail() {
 
   function handleDelete() {
     axios
-      .delete(`http://localhost:4000/api/pizza/${id}`)
+      .delete(`https://pizza-api1.onrender.com/api/pizza/${id}`)
       .then((response) => {
         console.log(response.data);
         navigate("/admin/edit/Pizza");

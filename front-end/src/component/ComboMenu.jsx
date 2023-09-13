@@ -16,7 +16,7 @@ function ComboMenu(props) {
   useEffect(() => {
     async function fetchCombo() {
       await axios
-        .get("http://localhost:4000/api/combo")
+        .get("https://pizza-api1.onrender.com/api/combo")
         .then((response) => {
           setComboArray(response.data);
         })

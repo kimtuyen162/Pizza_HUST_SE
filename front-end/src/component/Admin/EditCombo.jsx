@@ -18,7 +18,7 @@ const EditCombo = (props) => {
   useEffect(() => {
     async function fetchCombo() {
       await axios
-        .get(`http://localhost:4000/api/combo/${id}`)
+        .get(`https://pizza-api1.onrender.com/api/combo/${id}`)
         .then((response) => {
           console.log(response.data);
           setName(response.data.combo_name);
@@ -60,7 +60,7 @@ const EditCombo = (props) => {
       };
 
       axios
-        .patch(`http://localhost:4000/api/combo/${id}`, payload)
+        .patch(`https://pizza-api1.onrender.com/api/combo/${id}`, payload)
         .then((response) => {
           console.log(response.data);
           setNoti(true);

@@ -39,7 +39,7 @@ const CreateStarter = (props) => {
       };
 
       axios
-        .post(`http://localhost:4000/api/starter`, payload)
+        .post(`https://pizza-api1.onrender.com/api/starter`, payload)
         .then((response) => {
           console.log(response.data);
           setNoti(true);

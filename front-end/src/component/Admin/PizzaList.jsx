@@ -11,7 +11,7 @@ function PizzaList() {
   useEffect(() => {
     async function fetchPizza() {
       await axios
-        .get("http://localhost:4000/api/pizza")
+        .get("https://pizza-api1.onrender.com/api/pizza")
         .then((response) => {
           setRows(response.data);
         })
