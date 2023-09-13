@@ -1,5 +1,5 @@
 const Pizza = require("../models/pizzaModel");
-const Combo = require("../models/comboModel")
+const Combo = require("../models/comboModel");
 const mongoose = require("mongoose");
 
 //get all pizza
@@ -46,20 +46,20 @@ const createPizza = async (req, res) => {
 //delete ouzza
 const deletePizza = async (req, res) => {
   const { id } = req.params;
-  const combos = await Combo.find({})
+  const combos = await Combo.find({});
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "No such pizza" });
   }
 
-  for (const combo of combos){
+  for (const combo of combos) {
     const { pizzas } = combo;
-    for (const pizza of pizzas){
+    for (const pizza of pizzas) {
       console.log(id);
       console.log(pizza.pizza.toString());
-      console.log('\n');
+      console.log("\n");
       if (id == pizza.pizza.toString())
-       return res.status(406).json({error : "Item in a combo"})
+        return res.status(406).json({ error: "Item in a combo" });
     }
   }
 

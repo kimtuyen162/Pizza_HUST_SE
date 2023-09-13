@@ -94,7 +94,8 @@ function ComboDetail() {
         {pizza.map((item) => {
           return (
             <li key={item.pizza}>
-              Id: {item.pizza}
+              Id:
+              <Link to={`/admin/edit/Pizza/${item.pizza}`}>{item.pizza}</Link>
               <ul>
                 <li>Size:{item.size}</li>
                 <li>Crust:{item.crust}</li>
@@ -109,7 +110,10 @@ function ComboDetail() {
         {starter.map((item) => {
           return (
             <li key={item.starter}>
-              Id: {item.starter}
+              Id:{" "}
+              <Link to={`/admin/edit/Starters/${item.starter}`}>
+                {item.starter}
+              </Link>
               <ul>
                 <li>Quantity:{item.quantity}</li>
               </ul>
@@ -122,7 +126,8 @@ function ComboDetail() {
         {drink.map((item) => {
           return (
             <li key={item.drink}>
-              Id: {item.drink}
+              Id:
+              <Link to={`/admin/edit/Drinks/${item.drink}`}>{item.drink}</Link>
               <ul>
                 <li>Quantity:{item.quantity}</li>
               </ul>

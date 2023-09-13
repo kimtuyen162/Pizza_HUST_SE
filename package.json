@@ -1,0 +1,19 @@
+{
+  "name": "pizza-web",
+  "version": "1.0.0",
+  "description": "Project for Software Engineering Class 20222",
+  "main": "index.js",
+  "scripts": {
+    "start": "set PORT=3000&react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "server": "nodemon back-end/server.js",
+    "dev": "concurrently \"npm run server\" \"cd front-end&set PORT=3000&npm start\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.1"
+  }
+}

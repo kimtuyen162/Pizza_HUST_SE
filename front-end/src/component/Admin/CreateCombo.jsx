@@ -139,8 +139,7 @@ const CreateCombo = (props) => {
     }
   }
   function handleClick() {
-    if ((name === "") | (price === "") | (description === "") | (image === ""))
-      setEmptyField(true);
+    if ((name === "") | (price === "") | (image === "")) setEmptyField(true);
     else {
       const payload = {
         combo_name: name,

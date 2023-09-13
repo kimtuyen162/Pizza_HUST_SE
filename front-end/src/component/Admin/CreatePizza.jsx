@@ -29,7 +29,7 @@ const CreatePizza = (props) => {
     setNoti(false);
   };
   function handleClick() {
-    if ((name === "") | (price === "") | (description === "") | (image === ""))
+    if ((name === "") | (price === "") |  (image === ""))
       setEmptyField(true);
     else {
       const payload = {

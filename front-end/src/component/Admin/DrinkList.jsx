@@ -23,7 +23,7 @@ function DrinkList() {
   }, []);
   return (
     <div className="cartContent">
-      <Link to={`/admin/edit/Drink/create`}>
+      <Link to={`/admin/edit/Drinks/create`}>
         <Button
           sx={{
             mr: 2,
